@@ -48,6 +48,7 @@ class Tabs:
 
         dock = DockPanel()
         self.header = HTML(Width="100%")
+        self.footer = HTML(Width="100%")
         self.sidebar = HTML(Width="200px", Height="100%", StyleName="sidebar")
         self.fTabs = DecoratedTabPanel(Size=("100%", "100%"),
                                        StyleName="tabs")
@@ -57,6 +58,7 @@ class Tabs:
         #dp.add(self.fTabs)
 
         dock.add(self.header, DockPanel.NORTH)
+        dock.add(self.footer, DockPanel.SOUTH)
         dock.add(self.sidebar, DockPanel.EAST)
         dock.add(self.fTabs, DockPanel.CENTER)
         dock.setCellVerticalAlignment(self.fTabs, HasAlignment.ALIGN_TOP)
@@ -72,6 +74,9 @@ class Tabs:
 
         if title == 'header':
             self.header.setHTML(text)
+            return
+        elif title == 'footer':
+            self.footer.setHTML(text)
             return
         elif title == 'sidebar':
             self.sidebar.setHTML(text)
@@ -100,6 +105,7 @@ class Tabs:
     def loadPageList(self):
         HTTPRequest().asyncGet("sidebar.html", PageLoader(self, "sidebar"))
         HTTPRequest().asyncGet("header.html", PageLoader(self, "header"))
+        HTTPRequest().asyncGet("footer.html", PageLoader(self, "footer"))
         HTTPRequest().asyncGet("contents.txt", PageListLoader(self))
 
     def loadPages(self, pages):

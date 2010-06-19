@@ -1,7 +1,6 @@
 body {
   background-color: white;
   color: black;
-  font-size: smaller;
   margin: 0px;
   padding: 0px;
   font-family: sans-serif;
@@ -251,7 +250,7 @@ a:visited {
 {
     height: 5px;
     width: 5px;
-    background-image: url('images/corner_dialog_topleft.png');
+    background-image: url('corner_dialog_topleft.png');
 }
 .gwt-DecoratorPanel .topLeftInner /* { the inner element of the cell } */
 {
@@ -259,7 +258,7 @@ a:visited {
 .gwt-DecoratorPanel .topCenter /* /* { the top center cell } */
 {
     height: 5px;
-    background-image: url('images/corner_dialog_edge.png');
+    background-image: url('corner_dialog_edge.png');
 }
 .gwt-DecoratorPanel .topCenterInner 
 {
@@ -268,7 +267,7 @@ a:visited {
 {
     height: 5px;
     width: 5px;
-    background-image: url('images/corner_dialog_topright.png');
+    background-image: url('corner_dialog_topright.png');
 }
 .gwt-DecoratorPanel .topRightInner /* { the inner element of the cell } */
 {
@@ -280,7 +279,7 @@ a:visited {
 {
     height: 100%;
     width: 5px;
-    background-image: url('images/corner_dialog_edge.png');
+    background-image: url('corner_dialog_edge.png');
     background-repeat: repeat-y;
 }
 .gwt-DecoratorPanel .middleLeftInner /* { the inner element of the cell } */
@@ -296,7 +295,7 @@ a:visited {
 {
     height: 100%;
     width: 5px;
-    background-image: url('images/corner_dialog_edge.png');
+    background-image: url('corner_dialog_edge.png');
     background-repeat: repeat-y;
 }
 .gwt-DecoratorPanel .middleRightInner /* { the inner element of the cell } */
@@ -309,7 +308,7 @@ a:visited {
 {
     height: 5px;
     width: 5px;
-    background-image: url('images/corner_dialog_bottomleft.png');
+    background-image: url('corner_dialog_bottomleft.png');
 }
 .gwt-DecoratorPanel .bottomLeftInner /* { the inner element of the cell } */
 {
@@ -317,7 +316,7 @@ a:visited {
 .gwt-DecoratorPanel .bottomCenter /* { the bottom center cell } */
 {
     height: 5px;
-    background-image: url('images/corner_dialog_edge.png');
+    background-image: url('corner_dialog_edge.png');
 }
 .gwt-DecoratorPanel .bottomCenterInner /* { the inner element of the cell } */
 {
@@ -326,7 +325,7 @@ a:visited {
 {
     height: 5px;
     width: 5px;
-    background-image: url('images/corner_dialog_bottomright.png');
+    background-image: url('corner_dialog_bottomright.png');
 }
 .gwt-DecoratorPanel .bottomRightInner /* { the inner element of the cell } */
 {
@@ -343,12 +342,12 @@ a:visited {
 {
     height: 5px;
     width: 5px;
-    background-image: url('images/corner_dialog_topleft.png');
+    background-image: url('corner_dialog_topleft.png');
 }
 .gwt-DecoratedTabBar-wrapper .tabTopCenter 
 {
     height: 5px;
-    background-image: url('images/corner_dialog_edge.png');
+    background-image: url('corner_dialog_edge.png');
 }
 .gwt-DecoratedTabBar-wrapper .tabTopRightInner /* { the inner element of the cell } */
 {
@@ -361,12 +360,12 @@ a:visited {
 {
     height: 5px;
     width: 5px;
-    background-image: url('images/corner_dialog_topright.png');
+    background-image: url('corner_dialog_topright.png');
     background-repeat: no-repeat;
 }
 .gwt-DecoratedTabBar-wrapper .tabMiddleCenter /* { the middle row } */
 {
-    background-image: url('images/corner_dialog_edge.png');
+    background-image: url('corner_dialog_edge.png');
     background-repeat: repeat;
     cursor: pointer;
     cursor: hand;
@@ -375,14 +374,14 @@ a:visited {
 {
     height: 100%;
     width: 5px;
-    background-image: url('images/corner_dialog_edge.png');
+    background-image: url('corner_dialog_edge.png');
     background-repeat: repeat-y;
 }
 .gwt-DecoratedTabBar-wrapper .tabMiddleRight /* { the middle right cell } */
 {
     height: 100%;
     width: 50px;
-    background-image: url('images/corner_dialog_edge.png');
+    background-image: url('corner_dialog_edge.png');
     background-repeat: repeat-y;
     padding-left: 5px;
     padding-right: 5px;
@@ -392,36 +391,36 @@ a:visited {
 {
     height: 5px;
     width: 5px;
-    background-image: url('images/corner_dialog_topleft_black.png');
+    background-image: url('corner_dialog_topleft_black.png');
 }
 .gwt-DecoratedTabBar-wrapper .gwt-TabBarItem-selected .tabTopCenter 
 {
     height: 5px;
-    background-image: url('images/corner_dialog_edge_black.png');
+    background-image: url('corner_dialog_edge_black.png');
 }
 .gwt-DecoratedTabBar-wrapper .gwt-TabBarItem-selected .tabTopRight
 {
     height: 5px;
     width: 5px;
-    background-image: url('images/corner_dialog_topright_black.png');
+    background-image: url('corner_dialog_topright_black.png');
 }
 .gwt-DecoratedTabBar-wrapper .gwt-TabBarItem-selected .tabMiddleCenter /* { the middle row } */
 {
-    background-image: url('images/corner_dialog_edge_black.png');
+    background-image: url('corner_dialog_edge_black.png');
     background-repeat: repeat;
 }
 .gwt-DecoratedTabBar-wrapper .gwt-TabBarItem-selected .tabMiddleLeft /* { the middle left cell } */
 {
     height: 100%;
     width: 5px;
-    background-image: url('images/corner_dialog_edge_black.png');
+    background-image: url('corner_dialog_edge_black.png');
     background-repeat: repeat-y;
 }
 .gwt-DecoratedTabBar-wrapper .gwt-TabBarItem-selected .tabMiddleRight /* { the middle right cell } */
 {
     height: 100%;
     width: 50px;
-    background-image: url('images/corner_dialog_edge_black.png');
+    background-image: url('corner_dialog_edge_black.png');
     background-repeat: repeat-y;
     padding-left: 5px;
     padding-right: 5px;
@@ -444,7 +443,7 @@ a:visited {
 {
 }
 .gwt-DecoratorPanel .bluetitleicon {
-    background: url(images/blue_arrow.png) no-repeat;
+    background: url('blue_arrow.png') no-repeat;
     width: 12px;
     height: 12px;
     float: left;
@@ -463,12 +462,12 @@ a:visited {
 {
     width: 6px;
     height: 5px;
-    background-image: url('images/blue_arrow_top_left.png');
+    background-image: url('blue_arrow_top_left.png');
 }
 .gwt-DecoratorPanel .bluetopCenter /* /* { the top center cell } */
 {
     height: 5px;
-    background-image: url('images/blue_arrow_top_middle.png');
+    background-image: url('blue_arrow_top_middle.png');
     background-repeat: repeat-x;
 }
 .gwt-DecoratorPanel .bluetopCenterInner 
@@ -478,7 +477,7 @@ a:visited {
 {
     width: 6px;
     height: 5px;
-    background-image: url('images/blue_arrow_top_right.png');
+    background-image: url('blue_arrow_top_right.png');
 }
 .gwt-DecoratorPanel .bluetop2Left /* { the top left cell } */
 {
@@ -487,13 +486,13 @@ a:visited {
 {
     width: 6px;
     height: 17px;
-    background-image: url('images/blue_arrow_top2_left.png');
+    background-image: url('blue_arrow_top2_left.png');
     background-repeat: repeat-x;
 }
 .gwt-DecoratorPanel .bluetop2Center /* /* { the top center cell } */
 {
     height: 17px;
-    background-image: url('images/blue_arrow_top2_middle.png');
+    background-image: url('blue_arrow_top2_middle.png');
     background-repeat: repeat-x;
 }
 .gwt-DecoratorPanel .bluetop2CenterInner 
@@ -506,7 +505,7 @@ a:visited {
 {
     width: 6px;
     height: 17px;
-    background-image: url('images/blue_arrow_top2_right.png');
+    background-image: url('blue_arrow_top2_right.png');
     background-repeat: repeat-x;
 }
 .gwt-DecoratorPanel .bluemiddle /* { the middle row } */
@@ -515,7 +514,7 @@ a:visited {
 .gwt-DecoratorPanel .bluemiddleLeft /* { the middle left cell } */
 {
     width: 6px;
-    background-image: url('images/panel_middle_left.png');
+    background-image: url('panel_middle_left.png');
     background-repeat: repeat-y;
 }
 .gwt-DecoratorPanel .bluemiddleLeftInner /* { the inner element of the cell } */
@@ -531,7 +530,7 @@ a:visited {
 .gwt-DecoratorPanel .bluemiddleRight /* { the middle right cell } */
 {
     width: 6px;
-    background-image: url('images/panel_middle_right.png');
+    background-image: url('panel_middle_right.png');
     background-repeat: repeat-y;
 }
 .gwt-DecoratorPanel .bluemiddleRightInner /* { the inner element of the cell } */
@@ -544,7 +543,7 @@ a:visited {
 {
     height: 7px;
     width: 6px;
-    background-image: url('images/panel_bottom_left.png');
+    background-image: url('panel_bottom_left.png');
 }
 .gwt-DecoratorPanel .bluebottomLeftInner /* { the inner element of the cell } */
 {
@@ -552,7 +551,7 @@ a:visited {
 .gwt-DecoratorPanel .bluebottomCenter /* { the bottom center cell } */
 {
     height: 7px;
-    background-image: url('images/panel_bottom_middle.png');
+    background-image: url('panel_bottom_middle.png');
     background-repeat: repeat-x;
 }
 .gwt-DecoratorPanel .bluebottomCenterInner /* { the inner element of the cell } */
@@ -562,7 +561,7 @@ a:visited {
 {
     height: 7px;
     width: 6px;
-    background-image: url('images/panel_bottom_right.png');
+    background-image: url('panel_bottom_right.png');
 }
 .gwt-DecoratorPanel .bluebottomRightInner /* { the inner element of the cell } */
 {
