@@ -1,0 +1,32 @@
+<div id="content">
+
+<h2>How to set up a development environment</h2>
+
+<p>Web application development can be tricky: it can come as a
+bit of a shock when compared to python app development to learn
+that web browsers do not come with <em>any</em> proper debugging
+assistance whatsoever, by default. You <strong>will</strong> need
+to install and/or enable a debugger in the browsers that you use:</p>
+
+<ul>
+<li> For Firefox, install both Venkman and Firebug.</li>
+<li> For IE, install the "Microsoft Script Debugger".</li>
+<li> For Safari, go to the settings and enable "Development".</li>
+<li> Opera users, you are extremely lucky: opera has stack tracing by default.</li>
+</ul>
+
+<p>You should also note that the Pyjamas compiler has a "-d" option
+which will enable a python-like stack trace when a javascript
+exception occurs. The amount of javascript generated can be FIVE
+times larger, so only enable this during development.</p>
+
+<p>Lastly, it is worth reiterating that Pyjamas-Desktop runs as
+pure python: you should give serious consideration to running the
+application under Pyjamas-Desktop alongside developing it for the
+browser. The availability of python runtime stack traces and the
+simple fact that the standard python interpreter is much better at
+catching certain kinds of errors than (brain-damaged) browsers has
+generally found to make life much much easier.</p>
+
+</div>
+

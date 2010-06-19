@@ -1,0 +1,35 @@
+<div id="content">
+
+<h2>Overview</h2>
+
+<p>Like GWT, Pyjamas translates a <span class="g">Python application
+and libraries</span> (including UI widgets and DOM classes) into
+a <span class="p">Javascript application and libraries</span>,
+and packages it all up:</p>
+
+<p style="text-align:center;"><img width="348px" height="315px" alt="Overview of Pyjamas' components" src="./img/overview.png" /></p>
+
+<p><img style="width: 22px; height: 22px;" alt="[1]" src="./img/num1.png">
+<strong>pyjs</strong> translates Python code to Javascript by walking
+the Python abstract syntax tree and generating Javascript.</p>
+
+<p><img style="width: 22px; height: 22px;" alt="[2]" src="./img/num2.png">
+<strong>pyjslib</strong> takes care of Python types that require
+a custom Javascript implementation for pyjs to work. For example,
+even though Python lists are similar to Javascript arrays, Python
+lists are converted to custom objects that implement methods such
+as <em>append</em>.</p>
+
+<p><img style="width: 23px; height: 22px;" alt="[3]" src="./img/num3.png">
+<strong>UI widgets and a DOM library</strong> are provided as a
+convenience. They are written in Python and, like everything else,
+they are translated to Javascript for deployment. These are based
+on those in GWT.</p>
+
+<p>
+<img style="width: 22px; height: 22px;" alt="[4]" src="./img/num4.png">
+<strong>build</strong> manages the overall translation of
+individual components and creates a set of <code>.html</code>
+and <code>.js</code> files that can be served up by a Web server.</p>
+
+</div>
