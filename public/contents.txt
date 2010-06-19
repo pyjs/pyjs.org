@@ -1,5 +1,6 @@
 About:about.html
 Overview:overview.html
+Features:features.html
 Tutorials:getting_started.html
 Docs:documentation.html
 Download:download.html
