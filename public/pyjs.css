@@ -1,14 +1,12 @@
 body {
   background-color: white;
   color: black;
-  font-family: Arial, sans-serif;
   font-size: smaller;
-  margin: 20px 20px 20px 20px;
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
 }
 
-code {
-  font-size: small;
-}
 
 a {
   color: darkblue;
@@ -568,5 +566,95 @@ a:visited {
 }
 .gwt-DecoratorPanel .bluebottomRightInner /* { the inner element of the cell } */
 {
+}
+
+/* additional site CSS */
+.tabs {
+    margin: 2em;
+}
+
+.sidebar {
+    margin: 2em;
+    font-size:0.8em;
+}
+
+.sidebar ul {
+    list-style:none;
+    margin:0px;
+    padding:0px;
+}
+
+.code {
+    font-size: small;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid;
+}
+#content {
+    padding:1em 3em;
+    margin:0;
+}
+#content p {
+    width:40em;
+}
+#masthead {
+    padding: 1em; 
+    background-color: rgb(102, 0, 153); 
+    color: white;
+    margin:0;
+}
+#nascar {
+    float: right;
+}
+#logo {
+    float:left;
+    margin:0 2em;
+}
+span.p {
+    color: rgb(102, 0, 153)
+}
+span.g {
+    color: #009f29;
+}
+span.m {
+    color: #d400ba;
+}
+#downloadnow {
+    background: #d400ba;
+    border-bottom: 3px solid rgb(102, 0, 153);
+    text-align:center;
+    padding:0.2em 1em 1em 1em;
+}
+#downloadnow a {
+    color:white;
+}
+#downloadnow code {
+    color:white;
+    text-weight:bold;
+}
+.c {
+    text-align: center
+}
+#tabs {
+    text-align:center
+}
+#tabs ul {
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+#tabs li {
+	display: inline;
+	border: solid;
+	border-width: 0px 1px 1px 1px;
+	margin: 0 0.5em 0 0;
+    background-color: rgb(102, 0, 153); 	
+}
+#tabs li a {
+	padding: 0 1em;
+	color:white;
+    text-decoration:  none;
 }
 

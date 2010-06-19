@@ -4,6 +4,8 @@ from pyjamas.ui.TabBar import TabBar
 from pyjamas.ui.TabPanel import TabPanel
 from pyjamas.ui import HasAlignment
 from pyjamas.ui.Image import Image
+from pyjamas.ui.DockPanel import DockPanel
+from pyjamas.ui import HasAlignment
 from pyjamas.ui.VerticalPanel import VerticalPanel
 from pyjamas.ui.RootPanel import RootPanel
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
@@ -44,18 +46,24 @@ class Tabs:
 
     def onModuleLoad(self):
 
+        dock = DockPanel()
         self.header = HTML(Width="100%")
-        self.fTabs = DecoratedTabPanel(Size=("600px", "100%"))
-        #self.fTabs.add(HTML("shouldn't be here!"), None)
-        #self.fTabs.add(HTML("This is a Test.<br />Tab should be on right"),
-        #               "Test")
-        #self.fTabs.selectTab(0)
+        self.sidebar = HTML(Width="200px", Height="100%", StyleName="sidebar")
+        self.fTabs = DecoratedTabPanel(Size=("100%", "100%"),
+                                       StyleName="tabs")
 
-        dp = DecoratorTitledPanel("Tabs", "bluetitle", "bluetitleicon",
-                      ["bluetop", "bluetop2", "bluemiddle", "bluebottom"])
-        dp.add(self.fTabs)
-        RootPanel().add(self.header)
-        RootPanel().add(dp)
+        #dp = DecoratorTitledPanel("Tabs", "bluetitle", "bluetitleicon",
+        #              ["bluetop", "bluetop2", "bluemiddle", "bluebottom"])
+        #dp.add(self.fTabs)
+
+        dock.add(self.header, DockPanel.NORTH)
+        dock.add(self.sidebar, DockPanel.EAST)
+        dock.add(self.fTabs, DockPanel.CENTER)
+        dock.setCellVerticalAlignment(self.fTabs, HasAlignment.ALIGN_TOP)
+        dock.setCellWidth(self.header, "100%")
+        dock.setCellWidth(self.sidebar, "200px")
+
+        RootPanel().add(dock)
 
         self.loadPageList()
 
@@ -63,6 +71,9 @@ class Tabs:
 
         if title == 'header':
             self.header.setHTML(text)
+            return
+        elif title == 'sidebar':
+            self.sidebar.setHTML(text)
             return
 
         self.pages[title] = text
@@ -86,6 +97,7 @@ class Tabs:
         return p
 
     def loadPageList(self):
+        HTTPRequest().asyncGet("sidebar.html", PageLoader(self, "sidebar"))
         HTTPRequest().asyncGet("header.html", PageLoader(self, "header"))
         HTTPRequest().asyncGet("contents.txt", PageListLoader(self))
 
