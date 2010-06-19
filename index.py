@@ -60,6 +60,7 @@ class Tabs:
         dock.add(self.sidebar, DockPanel.EAST)
         dock.add(self.fTabs, DockPanel.CENTER)
         dock.setCellVerticalAlignment(self.fTabs, HasAlignment.ALIGN_TOP)
+        #dock.setCellHorizontalAlignment(self.fTabs, HasAlignment.ALIGN_CENTER)
         dock.setCellWidth(self.header, "100%")
         dock.setCellWidth(self.sidebar, "200px")
 
