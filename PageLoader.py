@@ -31,7 +31,7 @@ class PageLoader:
         self.title = title
 
     def onCompletion(self, text):
-        self.panel.createPage(title, text)
+        self.panel.createPage(self.title, text)
 
     def onError(self, text, code):
         self.panel.onError(text, code)

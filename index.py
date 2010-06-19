@@ -58,7 +58,14 @@ class Tabs:
         self.loadPageList()
 
     def createPage(self, title, text):
-        self.fTabs.add(HTML(text), title, True)
+        self.pages[title] = text
+        if len(self.pages) != len(self.page_list):
+            return
+        for l in self.page_list:
+            title = l[0]
+            text = self.pages[title]
+            self.fTabs.add(HTML(text), title, True)
+        self.fTabs.selectTab(0)
 
     def createImage(self, imageUrl):
         image = Image(imageUrl)
@@ -75,10 +82,12 @@ class Tabs:
         HTTPRequest().asyncGet("contents.txt", PageListLoader(self))
 
     def loadPages(self, pages):
+        self.pages = {}
+        self.page_list = pages
         for l in pages:
-            name = l[0]
+            title = l[0]
             desc = l[1]
-            HTTPRequest().asyncGet(desc, PageLoader(self, name))
+            HTTPRequest().asyncGet(desc, PageLoader(self, title))
 
 
 if __name__ == '__main__':
