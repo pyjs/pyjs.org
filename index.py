@@ -44,6 +44,7 @@ class Tabs:
 
     def onModuleLoad(self):
 
+        self.header = HTML(Width="100%")
         self.fTabs = DecoratedTabPanel(Size=("600px", "100%"))
         #self.fTabs.add(HTML("shouldn't be here!"), None)
         #self.fTabs.add(HTML("This is a Test.<br />Tab should be on right"),
@@ -53,11 +54,17 @@ class Tabs:
         dp = DecoratorTitledPanel("Tabs", "bluetitle", "bluetitleicon",
                       ["bluetop", "bluetop2", "bluemiddle", "bluebottom"])
         dp.add(self.fTabs)
+        RootPanel().add(self.header)
         RootPanel().add(dp)
 
         self.loadPageList()
 
     def createPage(self, title, text):
+
+        if title == 'header':
+            self.header.setHTML(text)
+            return
+
         self.pages[title] = text
         if len(self.pages) != len(self.page_list):
             return
@@ -79,6 +86,7 @@ class Tabs:
         return p
 
     def loadPageList(self):
+        HTTPRequest().asyncGet("header.html", PageLoader(self, "header"))
         HTTPRequest().asyncGet("contents.txt", PageListLoader(self))
 
     def loadPages(self, pages):
