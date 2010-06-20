@@ -1,0 +1,25 @@
+<p>
+There's a simple answer: <a href="http://pyjs.org/examples/libtest/output/LibTest.html">the regression tests</a>
+   these regression tests actually run under the standard python prompt,
+   so you add a test, run it in standard python, then compile it and test
+   it in the browser.
+</p>
+<p>
+   we are also working to get the regression tests to run under
+   spidermonkey (the mozilla js command-tool), python-spidermonkey (the
+   python bindings to the spidermonkey library) and pyv8 (the python
+   bindings by flier liu - http://code.google.com/p/pyv8 - to the google
+   v8 library).
+</p>
+<p>
+   once _that_ is done, then there is the plan to start running the
+   STANDARD http://python.org regression tests, all 25,000+ of them,
+   through the pyjamas compiler.
+   yes, this is possible.  basically, pyjamas becomes a python
+   accelerator, by translating to javascript and using the JIT google v8
+   engine to execute the resultant code.  
+</p>
+<p>
+    Ultimately, though: trust is always given.  In other words: it's
+    entirely up to you.
+</p>

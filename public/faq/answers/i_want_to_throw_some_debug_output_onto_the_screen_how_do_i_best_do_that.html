@@ -1,0 +1,53 @@
+
+<p>
+There are four main ways:
+</p>
+<ul>
+<li /> If you like, throw in lots of "alerts" into your application.
+<pre class="code">
+from pyjamas import Window
+Window.alert("Hello, here is an error")
+</pre>
+<li /> My favourite: add some HTML to the end of the page:
+<pre class="code">
+from pyjamas.ui.RootPanel import RootPanel
+from pyjamas.ui.HTML import HTML
+RootPanel().add(HTML("hello, here is an error")
+</pre>
+<li /> Another approach is to follow what examples/libtest/write.py does,
+which you should just consider blatantly copying:
+<pre class="code">
+from pyjamas import DOM
+
+def getBodyElement():
+    JS(""" return $doc.body; """)
+
+def write(text):
+    global data
+    data += text
+    DOM.setInnerHTML(element, data)
+
+def writebr(text):
+    write(text + "&lt;br /&gt;\n")
+
+data = ""
+element = DOM.createDiv()
+DOM.appendChild(getBodyElement(), element)
+</pre>
+<li /> If you have followed the advice above of the previous question,
+and have installed Firebug, then just insert a "print" statement, exactly
+as you would in "standard" python.  All output is directed to "console.write",
+where Firebug will add an object called "console" to the global namespace
+of your browser, and will "write" anything that goes to that console.write()
+function into a special debugging window.  If you haven't installed Firebug,
+and you use "print", you will get an error (because there will be no object
+called "console") in your browser's global namespace.  So make your life
+easier, and install Firebug.  or not.
+</ul>
+<p>
+A Window.alert is the easiest but also the most annoying.  It has the
+advantage however of not disrupting the screen layout.  Perhaps
+some day someone will do something really sophisticated, like provide
+a "logger" module which throws up a nice separate window.
+</p>
+

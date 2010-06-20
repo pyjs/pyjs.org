@@ -1,0 +1,24 @@
+<p>
+You should have read the CHANGELOG, which says this:
+<pre>
+    convert app "loading" to require the use of "if __name__ == '__main__'"
+    bringing pyjamas into line with "standard" python.  apps can convert with
+    contrib/pyjamas_0.4-0.5_upgrade/add_name_main.py to add a small codefragment
+    at the end: "app = MyApp(); app.onModuleLoad()"
+</pre>
+</p>
+<p>
+In other words, Pyjamas 0.4 and below used to spoon-feed you by calling
+a function "onModuleLoad()" in the exact same class as named after your
+application.  As this is somewhat tacky, and places an unnecessary restriction
+onto how you can lay out your app, it was removed, and replaced with something
+that is much more akin to how a "standard" desktop python app would work.
+</p>
+<p>
+The consequences are that your apps will, if you don't explicitly do anything,
+do absolutely nothing.  So, when you get a blank screen, that is actually
+technically correct, as exactly the same thing would happen with a standard
+python app!  Declare an instance of your app's class and call its
+onModuleLoad() function.
+</p>
+

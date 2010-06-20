@@ -1,0 +1,33 @@
+<p>
+Unless you have already designed the application to exclusively use AJAX
+in one form or another (REST, JSONRPC etc.) then it's pretty much a complete
+redesign.  The reason is simple: "standard" web applications load up one
+page at a time from the server, with possibly some bits of javascript
+thrown in.  Pyjamas applications are loaded <b>once</b>, as they are
+<b>pure javascript</b>.
+</p>
+<p>
+From that point onwards, unless you want another large javascript "hit",
+the entire application should use AJAX to fetch any data, including
+HTML.  If that sounds like it's a bit different from "normal" web applications,
+you'd be right.  It's more like "Desktop" application development.
+</p>
+<p>
+So - you can convert the Django (or other web app) one page at a
+time, to a format which separates out the data from its display.
+In other words: by the time you're done, there will be <b>no</b>
+templates left, only JSONRPC services (or other AJAX service /
+system).  If that sounds like a lot of work, then you can temporarily
+embed the templates on-demand into iframes, either using a
+<tt>pyjamas.ui.HTMLPanel</tt> or by using a <tt>pyjamas.ui.Frame</tt>
+widget.  If you've been told that Frames are a bad idea, you'd be
+right in the "normal" web development world, but completely wrong in
+this "Desktop-like" case.  Thanks to the Pyjamas API, it's possible
+to set width and height and to react to Window Resize events, and
+thus to change the entire layout of the application depending on
+the user preferences, requirements, browser type and window size
+(as is done in the Pyjamas
+<a href="http://pyjs.org/examples/mail/output/Mail.html">Mail</a>
+example).
+</p>
+

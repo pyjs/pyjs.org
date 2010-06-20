@@ -1,0 +1,42 @@
+<p>
+You should immediately stop trying to do too much, and eliminate pyjamas
+from the equation.  Download
+<a href="http://lkcl.net/jsonrpclib.tgz">jsonrpclib.tgz</a> and add
+some python-based client-side code to the <i>server-side</i> testing.
+As you are a good web developer, who follows good code standard practices,
+this should have already occurred to you and it just temporarily slipped
+your mind that there should be an automated test suite based on something
+like jsonrpclib.tgz which you can use to <i>prove</i> to yourself that
+the JSONRPC server-side services of your app are absolutely perfect.
+You already considered the distinct advantages of being able to do
+automated tests such as pretending to be a user, interacting with the
+server-side forms, adding and deleting of records etc., but you had
+juuust not quite got round to doing that yet.  well - now you have to.
+</p>
+<p>
+Once you have demonstrated to your satisfaction that there is nothing
+wrong with the JSONRPC services, you can then reintroduce Pyjamas,
+as a second client, into the equation.  The difference between then
+and now is that you now <i>know</i> that there is nothing wrong with
+the JSONRPC services, server-side.  So, anything that's wrong has to be
+something like you've specified the wrong URL in the use of the
+pyjamas.JSONService module.  Check that the URL is the same as the
+one that you used in the client-side usage of the python jsonrpclib.
+</p>
+<p>
+You <b>have</b> to remember that you are using AJAX, with JSONRPC. So,
+the same standard rules apply: you can <b>not</b> access AJAX URLs
+other than those which match the URL from where the web browser downloaded
+the HTML and the Javascript.  In other words, if your app is downloaded
+from http://fred.foo.com/myapp.html, then you can <b>not</b> put
+http://fred.foo.com:8080/jsonservice as the URL for the JSONRPC service,
+you can <b>not</b> put http://somewhere.else.com as the URL.  It
+<b>has</b> to be http://fred.foo.com/somewhere.
+</p>
+<p>
+Welcome to the world where people used to use AJAX to do cross-site
+scripting attacks, downloading viruses and doing phishing attacks and
+other crap, but can't any more, and you, as a developer, have to pay
+for that.
+</p>
+

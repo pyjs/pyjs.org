@@ -70,7 +70,23 @@ class Tabs:
 
         self.loadPageList()
 
-    def createPage(self, title, text):
+    def createPage(self, title, purpose, text):
+
+        if purpose == 'faq':
+            self.faq_pages[title] = text
+            if len(self.faq_pages) != len(self.faq_list):
+                return
+            faq = self.page_widgets['FAQ']
+            for l in self.faq_list:
+                question = l[0]
+                answer = self.faq_pages[question]
+                html = faq.getHTML()
+                html += "<h3>%s</h3>\n" % question
+                html += "\n%s\n\n" % answer
+                faq.setHTML(html)
+            html = "<div class='faq'>\n%s</div>\n" % html
+            faq.setHTML(html)
+            return
 
         if title == 'header':
             self.header.setHTML(text)
@@ -85,10 +101,16 @@ class Tabs:
         self.pages[title] = text
         if len(self.pages) != len(self.page_list):
             return
+        self.page_widgets = {}
         for l in self.page_list:
             title = l[0]
             text = self.pages[title]
-            self.fTabs.add(HTML(text), title, True)
+            widget = HTML(text)
+            self.fTabs.add(widget, title, True)
+            self.page_widgets[title] = widget
+            if title == 'FAQ':
+                HTTPRequest().asyncGet("faq/questions.txt",
+                                       PageListLoader(self, "faq"))
         self.fTabs.selectTab(0)
 
     def createImage(self, imageUrl):
@@ -103,18 +125,27 @@ class Tabs:
         return p
 
     def loadPageList(self):
-        HTTPRequest().asyncGet("sidebar.html", PageLoader(self, "sidebar"))
-        HTTPRequest().asyncGet("header.html", PageLoader(self, "header"))
-        HTTPRequest().asyncGet("footer.html", PageLoader(self, "footer"))
-        HTTPRequest().asyncGet("contents.txt", PageListLoader(self))
+        HTTPRequest().asyncGet("sidebar.html",
+                                PageLoader(self, "sidebar", "contents"))
+        HTTPRequest().asyncGet("header.html", 
+                                PageLoader(self, "header", "contents"))
+        HTTPRequest().asyncGet("footer.html", 
+                                PageLoader(self, "footer", "contents"))
+        HTTPRequest().asyncGet("contents.txt", 
+                                PageListLoader(self, "contents"))
 
-    def loadPages(self, pages):
-        self.pages = {}
-        self.page_list = pages
+    def loadPages(self, pages, purpose):
+        if purpose == 'contents':
+            self.pages = {}
+            self.page_list = pages
+        elif purpose == 'faq':
+            self.faq_pages = {}
+            self.faq_list = pages
+
         for l in pages:
             title = l[0]
             desc = l[1]
-            HTTPRequest().asyncGet(desc, PageLoader(self, title))
+            HTTPRequest().asyncGet(desc, PageLoader(self, title, purpose))
 
 
 if __name__ == '__main__':

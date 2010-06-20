@@ -572,6 +572,10 @@ a:visited {
     margin: 2em;
 }
 
+.faq {
+    margin: 2em;
+}
+
 .sidebar {
     margin: 2em;
     font-size:0.8em;
@@ -655,5 +659,10 @@ span.m {
 	padding: 0 1em;
 	color:white;
     text-decoration:  none;
+}
+
+h2 {
+font-weight: bold;
+font-family: Helvetica,Arial,sans-serif;
 }
 

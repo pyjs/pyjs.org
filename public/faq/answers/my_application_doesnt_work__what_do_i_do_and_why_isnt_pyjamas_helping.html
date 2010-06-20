@@ -1,0 +1,64 @@
+<p>
+There are so many things you should be doing to determine the cause
+of "it ain't working" it's almost unreal.  But before answering
+in more detail, it's important that you know what pyjamas is and
+is not.  First off: pyjamas is a compiler, not a debugger.  It's the
+equivalent of "gcc".  Actually, if you know how gcc works, pyjsbuild
+is the equivalent of "gcc" and pyjscompile is the equivalent of,
+for example, "/usr/lib/gcc/x86_64-linux-gnu/4.3.3/cc1".  In other
+words, gcc and pyjsbuild are the general-purpose "front-ends",
+and cc1 and pyjscompile are the actual nitty-gritty compilers.
+</p>
+<p>
+You <i>need</i> to be aware of this because you cannot expect pyjamas,
+a specialist compiler, to also take on the task of being the debugger, 
+or to incorporate the tasks performed by tools such as pylint, or to be
+the virtual machine under which the javascript executes, or to be
+a javascript code-compressor, or to do any other task <i>other</i> than
+actual compiling.
+</p>
+<p>
+With that in mind, here are some things that you can do:
+<ul>
+<li /> Add the -d option to the build process: pyjsbuild -d {myapp.py}.
+       It's the equivalent of adding "-g" to gcc.
+       -d will enable a horrendous amount of extra output in the
+       application, including actually placing the line numbers and
+       module name into the javascript output, for each and every single
+       line of code being executed (!)  Also, a stacktrace will be
+       recorded so that if there are any exceptions in your application,
+       an Alert will come up with the full stacktrace (just like in
+       "real" python applications).
+<li /> Watch the Javascript Console.
+<li /> Watch the Javascript Console.
+<li /> Watch the Javascript Console.
+<li /> Did we say, and emphasise enough, that you need to watch the Javascript
+       Console?
+<li /> You need to watch the javascript console.
+<li /> You need to watch the javascript console because that is where
+       runtime javascript errors are shown.  Most web applications are written
+       so badly that the errors are usually silently ignored by browsers,
+       so as not to frighten users.  As a developer, you cannot ignore
+       the errors (not if you expect to actually be able to write an app,
+       that is...)
+<li /> If you are using Firefox, install <i>both</i> Venkman <b>and</b>
+       Firebug.  You will need them both.  Use them.  get used to using them.
+<li /> If you are using IE, install the Script Debugger.  use it.
+<li /> If you were debugging a c or c++ application, you would be using gdb.
+       The javascript console, Firebug, Venkman, the Microsoft Script Debugger:
+       these are all the equivalent of gdb.  use them.  You will suck at
+       being a Web developer if you do not use these tools.
+<li /> Install <a href="http://pyjd.org">Pyjamas Desktop</a> and run your
+       application under that.
+</ul>
+</p>
+<p>
+Overall, then, it's important to remember that pyjamas is a compiler,
+not an interpreter, not a debugger, syntax checker or anything else other
+than a compiler.  This may be a bit of a shock if you are used to the
+python interpreter throwing helpful stack traces for you - which is what
+Pyjamas-Desktop is there for: it actually runs Pyjamas applications
+<i>as real python</i>, not as javascript.
+
+</p>
+

@@ -1,0 +1,35 @@
+<p>
+svn r785 or so started supporting XULRunner (python-xpcom) as well as 
+pywebkitgtk, and underwent something of a minor code-shuffle, to make
+the style of PyJD apps look much more like PyQT4 / PyGTK2.  So, for example,
+instead of gtk.main() you would do pyjd.run().  There's also some "setup"
+required, which kick-starts the underlying web engine into life.  In
+a web browser (PyJS) of course the web browser is already running (duh)
+so pyjd.setup() and pyjd.run() do nothing, in PyJS.  The functions still
+have to be there, of course, so that the app can be identical under both
+PyJD and PyJS.  To convert apps to use PyJD, add three lines:
+</p>
+<pre class="code">
+# at top:
+import pyjd # this is a dummy in pyjs and has no effect
+
+# rest of imports
+...
+...
+
+# declare classes etc.
+...
+...
+
+# at bottom:
+if __name__ == '__main__':
+    # equivalent to starting a web browser, does nothing
+    # in pyjs, because duh, you're already running the web
+    # browser.
+    pyjd.setup("./public/{thehtmlloaderfile}.html")
+    ...
+    ...
+    # last line
+    pyjd.run() # equivalent to gtk.run and does nothing in pyjs
+</pre>
+

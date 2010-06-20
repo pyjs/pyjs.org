@@ -1,0 +1,21 @@
+<p>
+Pyjamas is a compiler - it's a specialist tool that focusses specifically
+on the job of turning python into javascript.  It does <i>not</i>
+include "compression" technology.  That task is done by specialist
+technology such as the "YUI Javascript Compressor", the use of which
+will make it damn hard for you to debug an application as it completely
+trashes all of the names of functions and variables.  So only make use
+of compressors if you absolutely have to.
+</p>
+<p>
+HTTP 1.1 GZip Compression is usually enabled by default in both
+browsers and Web Servers, giving anywhere between an 8:1 and a 10:1
+compression ratio in network traffic of pyjamas-compiled output.
+So, although the output from pyjamas looks scarily large, it's
+actually not as bad as it looks.  500k is not uncommon: the actual
+amount of network traffic can be as little as 50k to 80k, which you
+can verify by installing a network sniffer on your network.  So,
+you actually get the best of both worlds: human-readable javascript
+and efficient transfer of your application to the users.
+</p>
+

@@ -1,0 +1,54 @@
+<p>
+You are not in Kansas any more.  Pyjamas is declarative-style programming,
+using a "real" programming language.  All those widget-sets were designed
+to be driven from inside HTML (a style of web development which, using
+Pyjamas, you have just left far behind) and by inserting javascript snippets
+into the HTML.  If you try that with a Pyjamas app, you are not only likely
+to get yourself into an awful mess, but also you will be unlikely to run
+the same (python-based) app under Pyjamas-Desktop, as you will still have
+a Javascript dependency.  You <i>can</i> run javascript under Pyjamas-Desktop
+but it's not easy to interact with (the python code) which is why we went
+to all the trouble of replacing all the javascript with equivalent python,
+doing exactly the same things with python-DOM bindings rather than
+javascript-DOM bindings.
+</p>
+<p>
+Shoe-horning an alien AJAX toolkit into Pyjamas takes a considerable amount
+of attention to detail, and is also likely to have unintended side-effects
+as the two interact.  Not only that, but you are in for a bit of a shock when
+you actually start looking at the number of lines of code in some of these
+javascript "rich" widget tooklits, and an even bigger one when it comes to
+linking the two together.
+</p>
+<p>
+Take gwt-ext as a successful example of a wrapper between GWT and ExtJS.
+The "startup" glue code is 8,000 lines of dedicated javascript, the sole
+purpose of which is to get extjs initialised in a way that's compatible
+with GWT.  8,000 lines of javascript is about 70% the size of the entire
+pyjamas codebase, including widget set and compiler, at the time of writing.
+Then, the "wrappers" are a further whopping 80,000 lines of Java-javascript
+hybrid.
+</p>
+<p>
+So, at the end of all that work, you have a wrapper which is itself a
+monstrous hybrid to maintain, which will need changing every time the
+Javascript Widget Library API changes, and, on top of that, if the
+Javascript Widget Library doesn't do what you want, you are screwed,
+because the whole reason why you're here working with Pyjamas is because
+you prefer working with python instead of Javascript.  And if there's
+a bug - one that wasn't introduced by the custom-written wrapper - in
+the Javascript Widget Library itself, then you still have to delve into
+Javascript and fix it.
+</p>
+<p>
+Overall, then, does it not make much more sense to rewrite the "pretty"
+widget in python, and contribute it to the community under the same
+license (Apache 2.0) so that everyone else in the Pyjamas community can
+benefit from it and help you improve it?  Especially since the amount
+of code that you will be writing will be significantly less than if you
+tried the same thing in Java or Javascript.
+</p>
+<p>
+So, instead of hurting yourself with javascript, perhaps you might like
+to consider enjoying Web programming, using python?
+</p>

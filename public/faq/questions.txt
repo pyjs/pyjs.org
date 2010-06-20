@@ -1,0 +1,34 @@
+What is <span style="color: rgb(102, 0, 153);">pyjamas</span>?
+Is pyjamas like "yet another AJAX framework?"
+Is Pyjamas a server-side web framework?
+Is Pyjamas a client-side browser plugin?
+Is Pyjamas a firefox extension (like pyxpcomext)?
+Does it fly?
+Is Pyjamas a bird or a plane?
+How come you can run python, then?
+How does it work, then?
+Do I have to know any Javascript?
+Do I have to know any Web Programming?
+Why not?
+I've never done User-Interfaces before - how do I get started?
+I want to include python module X in my application. can I?
+What server-side web framework should I use?
+Ok - what's the <i>best</i> server-side web framework I should use?
+I have an existing Django (or other app) that I want to convert to Pyjamas, how do I do that?
+I'm a bit underwhelmed by the apparent lack of documentation
+I'm a bit underwhelmed by the apparent lack of documentation on XML and DOM
+I'm developing my app, I need help: what do I do?
+My application doesn't work.  What do I do, and why isn't Pyjamas helping?
+I want to throw some debug output onto the screen, how do I best do that?
+The UI Widgets create table layouts.  I hate table layouts! Tables Suck!
+The output from Pyjamas is <i>really</i> verbose.  I don't like that!
+The output from Pyjamas is still too verbose.  What do I do?
+I'm doing JSONRPC with pyjamas, but my app isn't working.
+I've upgraded to Pyjamas 0.5 (or above) and I get a blank screen.
+I've upgraded to svn r785 or greater (or Pyjamas 0.6) and I want to use PyJD
+I love/prefer {insert AJAX / Javascript framework here}, how do I use it?
+huh? why?? Some of the widgets in DojoX / Ext-JS are really cute!  I want them! waaah!
+I'm installing hulahop and python-xpcom on Pyjamas-Desktop on Ubuntu 9, but it don't work, it all broke!
+I'm evaluating GWT and Pyjamas, and I don't know which one to choose.
+How can i "trust" the pyjamas compiler?
+I'm getting memory leaks in IE6 under XP and Win2000

@@ -1,0 +1,32 @@
+<p>
+Browsers only support javascript, and pyjs is a python-to-javascript
+compiler (strictly speaking, a language translator).  Therefore, any
+python module, written in pure python, stands a good chance of working
+(such as <a href="http://puremvc.org">PureMVC</a>).  For anything that's
+written in c, you stand absolutely zero chance, and that's the end of it.
+However, you can always use a python-based Web Server Framework, and
+execute whatever python module you choose, server-side, then ship whatever
+results you choose back to the browser, just like you would with any other
+web application.
+</p>
+<p>
+The Pyjamas UI Widget Set and supporting DOM module and other infrastructure
+is, by the time it ends up as javascript, absolutely no different from any
+other javascript-based Web Browser Framework - <b>other</b> than the fact
+that the <b>original</b> language was Python, and other than the fact that
+Pyjamas-Desktop exists.  So, you <b>could</b> include python module X in
+your application, <b>if</b> you run it under Pyjamas-Desktop - but that is
+strongly discouraged, for two reasons.  Firstly, you stand zero chance of
+compiling the same application to javascript, should you ever wish to run it
+in a Web Browser.  Secondly, the Web Engines used by Pyjamas-Desktop are
+effectively single-threaded, and, just like with PyQt4 and PyGTK2, control
+must be handed back quickly to the internal top-level event-handling loop.
+So, if you execute some CPU-intensive code (in python module X), the entire
+application visually grinds to a halt and becomes totally unresponsive, just
+like an overloaded Web Browser, waiting for that code to complete.  To avoid
+this situation, you should use the exact same asynchronous tricks used when
+code is executed in browsers: AJAX to communicate with a Web Server Framework.
+(yes, Pyjamas-Desktop supports XMLHttpRequest: for the above reasons,
+it is strongly recommended that you use it).
+</p>
+

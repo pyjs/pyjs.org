@@ -1,0 +1,46 @@
+<p>
+In the Immortal Words of Bjorne Again, at the free concert on Parker's Piece,
+Cambridge, in the mid 1990's, <i>"Tough Titty: We Play Abba, Now"</i>.
+But seriously - this is a Desktop-like Widget Set.  You use the high-level
+API.  Why would you care if the low-level implementation, which you're
+never going to have to get involved with, uses HTML Tables instead of your
+personal preference, CSS "div" pseudo-tables?
+</p>
+<p>
+Also, think about this: your personal preference, for CSS pseudo-tables,
+is based on an aversion that was brainwashed into you from having to
+hand-code and hard-code HTML markup.  If you use hand-coded hard-coded
+HTML in Pyjamas for complex layout, you're <i>really</i> doing something
+wrong.  The whole point of Pyjamas is to leverage the simplicity and ease
+of the Python programming language, along with a declarative programming
+style, to create an application in terms of Widgets, not in terms of HTML.
+</p>
+<p>
+Not only that, but the whole reason why CSS pseudo-tables are recommended
+over HTML tables is because of lack of control over layout.  Well, with
+the declarative programming style from Pyjamas UI Widgets, that lack of
+control when compared to static HTML is <i>more</i> than adequately
+compensated for.  For example, you can easily use Window Resize Change
+Notify to completely restructure the application layout, dynamically
+(see <a href="http://lkcl.net">lkcl.net</a> for an example, including
+<a href="http://lkcl.net/site_code">source</a>), or you can just resize
+the Grid itself and its child widgets to fit 100% on-screen, as is done
+in the Pyjamas
+<a href="http://pyjs.org/examples/mail/output/Mail.html">Mail</a>
+example.
+</p>
+<p>
+Then, also, there's what happens when you create a CSS pseudo-table,
+and a user shrinks the screen size.  What happens?  The layout goes
+completely haywire, because by hard-coding the width of the outer DIV,
+the inner items now have nowhere to go, and thus your site looks
+absolutely rubbish.  Summary: CSS pseudo-tables are not the panacea
+you were expecting.
+</p>
+<p>
+So, the short version is: Pyjamas U.I. Widgets provide far more flexibility
+and better layout than either of the two "plain" / "static" HTML solutions.
+Ultimately, if you <i>really</i> don't like the HTML-based widgets, feel
+free to create your own, and submit a patch.
+</p>
+
