@@ -68,10 +68,13 @@ class Tabs:
         dock.setCellWidth(self.header, "100%")
         dock.setCellWidth(self.sidebar, "200px")
 
+        History.addHistoryListener(self)
+        initToken = History.getToken()
+        print "initial token", initToken
+
         RootPanel().add(dock)
 
         self.loadPageList()
-        History.addHistoryListener(self)
 
     def createPage(self, title, purpose, text):
 
@@ -133,9 +136,8 @@ class Tabs:
         return p
 
     def onHistoryChanged(self, token):
-        print "onHistoryChanged", token, self.pages.keys()
         if self.pages.has_key(token):
-            idx = self.tab_index(token)
+            idx = self.tab_index[token]
             self.fTabs.selectTab(idx)
 
     def loadPageList(self):
