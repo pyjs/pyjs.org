@@ -124,17 +124,6 @@ class Tabs:
                 widget.replaceLinks(use_page_href=False)
         self.fTabs.selectTab(0)
 
-    def createImage(self, imageUrl):
-        image = Image(imageUrl)
-        image.setStyleName("ks-images-Image")
-        
-        p = VerticalPanel()
-        p.setHorizontalAlignment(HasAlignment.ALIGN_CENTER)
-        p.setVerticalAlignment(HasAlignment.ALIGN_MIDDLE)
-        p.add(image)
-
-        return p
-
     def onHistoryChanged(self, token):
         if self.pages.has_key(token):
             idx = self.tab_index[token]
