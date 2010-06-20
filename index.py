@@ -107,7 +107,7 @@ class Tabs:
             return
         self.page_widgets = {}
         self.tab_index = {}
-        for [idx, l] in enumerate(self.page_list):
+        for (idx, l) in enumerate(self.page_list):
             title = l[0]
             text = self.pages[title]
             self.tab_index[title] = idx
