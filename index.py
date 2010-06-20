@@ -19,6 +19,8 @@ from pyjamas.ui.DecoratorPanel import DecoratedTabPanel, DecoratorPanel
 from pyjamas.ui.DecoratorPanel import DecoratorTitledPanel
 from pyjamas.HTTPRequest import HTTPRequest
 from PageLoader import PageListLoader, PageLoader
+from pyjamas.ui.HTMLLinkPanel import HTMLLinkPanel
+from pyjamas import History
 
 
 #class PrettyTab(DecoratorPanel):
@@ -69,6 +71,7 @@ class Tabs:
         RootPanel().add(dock)
 
         self.loadPageList()
+        History.addHistoryListener(self)
 
     def createPage(self, title, purpose, text):
 
@@ -86,6 +89,7 @@ class Tabs:
                 faq.setHTML(html)
             html = "<div class='faq'>\n%s</div>\n" % html
             faq.setHTML(html)
+            faq.replaceLinks(use_page_href=False)
             return
 
         if title == 'header':
@@ -102,15 +106,19 @@ class Tabs:
         if len(self.pages) != len(self.page_list):
             return
         self.page_widgets = {}
-        for l in self.page_list:
+        self.tab_index = {}
+        for [idx, l] in enumerate(self.page_list):
             title = l[0]
             text = self.pages[title]
-            widget = HTML(text)
+            self.tab_index[title] = idx
+            widget = HTMLLinkPanel(text)
             self.fTabs.add(widget, title, True)
             self.page_widgets[title] = widget
             if title == 'FAQ':
                 HTTPRequest().asyncGet("faq/questions.txt",
                                        PageListLoader(self, "faq"))
+            else:
+                widget.replaceLinks(use_page_href=False)
         self.fTabs.selectTab(0)
 
     def createImage(self, imageUrl):
@@ -123,6 +131,12 @@ class Tabs:
         p.add(image)
 
         return p
+
+    def onHistoryChanged(self, token):
+        print "onHistoryChanged", token, self.pages.keys()
+        if self.pages.has_key(token):
+            idx = self.tab_index(token)
+            self.fTabs.selectTab(idx)
 
     def loadPageList(self):
         HTTPRequest().asyncGet("sidebar.html",
