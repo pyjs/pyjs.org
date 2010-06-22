@@ -32,3 +32,4 @@ I'm installing hulahop and python-xpcom on Pyjamas-Desktop on Ubuntu 9, but it d
 I'm evaluating GWT and Pyjamas, and I don't know which one to choose.
 How can i "trust" the pyjamas compiler?
 I'm getting memory leaks in IE6 under XP and Win2000
+How do I help with development of Pyjamas?

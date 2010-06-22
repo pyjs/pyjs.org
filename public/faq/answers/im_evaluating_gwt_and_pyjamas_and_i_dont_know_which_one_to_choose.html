@@ -18,18 +18,29 @@
  how to do internationalisation of applications.
 </p>
 <p>
-  our focus, as a community effort rather than a google-corporate-full-
-  time-multi-man-team-funded effort, is therefore on the tools and the
-  infrastructure that _we the contributors_ need and enjoy working on,
-  which is a much smaller subset of functionality than "that which
-  'employees of google' are tasked with".
+ our focus, as a community effort rather than a google-corporate-full-
+ time-multi-man-team-funded effort, is therefore on the tools and the
+ infrastructure that _we the contributors_ need and enjoy working on,
+ which is a much smaller subset of functionality than "that which
+ 'employees of google' are tasked with".
 </p>
 <p>
-   so, like lovelysystems, who have some amazing python and javascript
-   engineers, you should utilise pyjamas if a) you feel that the use of
-   GWT's infrastructure and libraries is not going to be worth tolerating
-   the pain barrier of java b) you are prepared to dive in to the (very
-   compact and readable) pyjamas libraries if the code doesn't do what
-   you need, and to contribute.
+ so, like lovelysystems, who have some amazing python and javascript
+ engineers, you should utilise pyjamas if a) you feel that the use of
+ GWT's infrastructure and libraries is not going to be worth tolerating
+ the pain barrier of java b) you are prepared to dive in to the (very
+ compact and readable) pyjamas libraries if the code doesn't do what
+ you need, and to contribute.
+</p>
+<p>
+ however, it's particularly telling, and explicitly worth
+ mentioning, that JSONRPC was the key reason why lovelysystems did
+ not choose GWT, after around two months of full-time evaluation.
+ JSONRPC highlighted severe flaws in java as a language, thanks
+ to its lack of dynamic typing.  the fact that a JSONRPC service
+ could be implemented in fifty lines of python and could be used
+ with one import, one statement and one decorator per function 
+ server-side, alongside almost as easy-to-use classes in the web
+ browser, made the choice of pyjamas a no-brainer.
 </p>
 
