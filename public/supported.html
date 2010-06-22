@@ -1,0 +1,165 @@
+<div id="content">
+<h2>Pyjamas Python-to-Javascript Language Features</h2>
+<p>
+The pyjamas python-to-javascript compiler is actually a
+<a href="http://en.wikipedia.org/wiki/Translator_(computing)">language translator</a>.
+It has two main modes: -O and --strict.  The --strict mode aims for
+<i>full</i> python interoperability, even at the expense of performance,
+whilst the -O mode is, like gcc's -O option, "optimised" for speed,
+even at the expense of missing out certain python language features
+and relying on javascript instead.
+The <a href="http://code.google.com/p/pyjamas/wiki/MigrationGuide">Migration Guide</a>
+best describes the differences.
+</p>
+<h2>Supported syntax</h2>
+<p>
+The majority of python 2.5, and parts of python 2.6 syntax are supported,
+including yield <i>despite</i> only one web browser engine having support
+for ECMAScript "yield" (which is <b>not</b> used).  The yield support is
+implemented as a state machine, rewriting the code so that it is re-entrant,
+and can resume on each yield.  The features <i>not</i> supported are
+pretty small and obscure, and include for example, at the time of writing,
+assignment to variables of list items in for-loop syntax is not
+(<tt>for [a, b] in enumerate(l)</tt>), whereas
+assignment to tuples is (<tt>for (a, b) in enumerate(l)</tt>).
+Overall it is best to read the
+<a href="http://code.google.com/p/pyjamas/wiki/MigrationGuide">Migration Guide</a>
+and go from there.
+</p>
+<p>
+One particular feature worth noting: the pyjamas python-to-javascript compiler
+uses the internal features of python (its compile module) to turn python into
+an Abstract Syntax Tree.   This has - had - the disadvantage that the compiler
+is - was - tied to one specific version of python (2.5).  As of Pyjamas 
+0.6, it has become possible to use anything from
+python 2.4 and upwards to compile code with python 2.5 syntax, using the
+"--internal-ast" option.  A port of lib2to3 was used as the basis for an
+AST which is identical to that created by the c-code in the http://python.org
+compiler.  The plan is to use this at some point to implement "exec" and
+"eval" builtins, but it has the nice side-effect of allowing people who
+can only use specific versions of python to reliably compile pyjamas python
+into javascript.
+</p>
+
+<h2>Supported modules</h2>
+<p>
+Additionally, the python-to-javascript compiler has available to it some
+implementations of standard python modules, either in pure python or in
+hybrid javascript and using web browser built-ins.  Here is a list of the
+current python modules that are partially supported.  They have all been
+contributed by pyjamas developers, and anyone wishing to have particular
+features that are not yet included should simply write them and submit them
+as a patch:
+</p>
+<pre>
+    base64.py
+    binascii.py
+    csv.py
+    datetime.py
+    math.py
+    md5.py
+    os.py
+    _random.py
+    random.py
+    re.py
+    sets.py
+    struct.py
+    sys.py
+    time.py
+    urllib.py
+</pre>
+
+<h2>Supported built-ins</h2>
+<p>
+Here, also, is a list of supported built-in functions, classes and types.
+Again: these have been contributed by various pyjamas developers, and again,
+if there is a particular function or feature missing, it can be submitted
+as a patch.
+</p>
+<p>
+Functions:
+</p>
+<pre>
+    __import__
+    abs
+    all
+    any
+    bool
+    callable
+    chr
+    cmp
+    delattr
+    dir
+    divmod
+    enumerate
+    filter
+    float
+    getattr
+    hasattr
+    hash
+    hex
+    isinstance
+    issubclass
+    iter
+    len
+    map
+    max
+    min
+    oct
+    open
+    ord
+    pow
+    property
+    range
+    reduce
+    repr
+    reversed
+    round
+    setattr
+    sorted
+    staticmethod
+    str
+    sum
+    super
+    type
+    xrange
+    zip
+</pre>
+<p>
+Classes:
+</p>
+<pre>
+    ArithmeticError
+    AttributeError
+    BaseException
+    Exception
+    GeneratorExit
+    ImportError
+    IndexError
+    KeyError
+    LookupError
+    NameError
+    NotImplemented  
+    NotImplementedError
+    NotImplementedType
+    RuntimeError
+    StandardError
+    StopIteration
+    TypeError
+    ValueError
+    ZeroDivisionError
+</pre>
+<p>
+Types:
+</p>
+<pre>
+    dict
+    frozenset
+    int
+    list
+    long
+    object
+    set
+    tuple
+</pre>
+</div>
