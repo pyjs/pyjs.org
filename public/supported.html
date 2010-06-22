@@ -27,6 +27,17 @@ Overall it is best to read the
 and go from there.
 </p>
 <p>
+Multiple inheritance is also supported, as is the creation of
+metaclasses using three arguments to the builtin "type" function
+(but a call to "type" with only one argument is not supported,
+and you should be using isinstance for that, anyway).  Object
+introspection is supported, as are decorators, static methods,
+exceptions and so on.  __new__ however, at the time of writing,
+is a little iffy.  unicode is <i>not</i> supported, as it would be
+horrendous to implement in javascript, but the long type <i>is</i>
+supported, emulated correctly as javascript.
+</p>
+<p>
 One particular feature worth noting: the pyjamas python-to-javascript compiler
 uses the internal features of python (its compile module) to turn python into
 an Abstract Syntax Tree.   This has - had - the disadvantage that the compiler
@@ -39,6 +50,11 @@ compiler.  The plan is to use this at some point to implement "exec" and
 "eval" builtins, but it has the nice side-effect of allowing people who
 can only use specific versions of python to reliably compile pyjamas python
 into javascript.
+</p>
+<p>
+Overall, the general rule is that whoever wants or needs something, they
+either work around the limitations of javascript and the pyjs implementation,
+or they provide a patch to improve the compiler/translator.
 </p>
 
 <h2>Supported modules</h2>
