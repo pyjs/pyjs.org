@@ -1,6 +1,41 @@
 <div id="content">
 
-<h2>How to set up a development environment</h2>
+<h2>Source Code</h2>
+
+<p>
+For read-only access, use the following:
+</p>
+<code>git clone git://pyjs.org/git/pyjamas.git</code>
+<p>
+If you would like write-access, please simply ask on the
+<a href="http://groups.google.com/group/pyjamas-dev">Mailing List</a>.
+For developers, use the following (which only works once you have
+sent in an ssh public key):
+</p>
+<code>git clone gitolite@pyjs.org:pyjamas</code>
+
+<h2>Pyjamas Developer Guidelines</h2>
+
+<p>
+In the Pyjamas repository is a file DEVELOPER.RULES.  As long as you
+follow those rules, you can do what you like.  The trickiest part about
+Pyjamas is remembering that it is several separate projects.  For
+example: modifying the javascript compiler has absolutely nothing to do
+with Pyjamas-Desktop.  But, modifying a Pyjamas UI Widget requires testing
+on <b>eight</b> platforms (five web and three desktop) including compiling
+and testing using both --strict and -O on the five web platforms, and
+testing under nearly <b>ten</b> web browsers (Firefox 2 to 4; Opera 9 to 10.5;
+Safari 3 and 4; Google Chrome; IE 6 and above, and so on).  Clearly, this
+is an impossible task but you should make the best efforts and use your
+judgement, and ask for help on the mailing list.
+</p>
+<p>
+Lastly - please use the bugtracker to report bugs (regardless of how
+trivial or small); the mailing list to coordinate discussions; the pyjamas
+wiki to create HOWTOs and so on.
+</p>
+
+<h2>How to set up a Web development environment</h2>
 
 <p>Web application development can be tricky: it can come as a
 bit of a shock when compared to python app development to learn
