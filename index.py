@@ -15,6 +15,7 @@ from pyjamas.ui.Composite import Composite
 from pyjamas.ui import MouseListener
 from pyjamas.ui import Event
 from pyjamas import Window
+from pyjamas import DeferredCommand
 from pyjamas.ui.DecoratorPanel import DecoratedTabPanel, DecoratorPanel
 from pyjamas.ui.DecoratorPanel import DecoratorTitledPanel
 from pyjamas.HTTPRequest import HTTPRequest
@@ -66,6 +67,7 @@ class Tabs:
         dock.setCellVerticalAlignment(self.fTabs, HasAlignment.ALIGN_TOP)
         #dock.setCellHorizontalAlignment(self.fTabs, HasAlignment.ALIGN_CENTER)
         dock.setCellWidth(self.header, "100%")
+        dock.setCellWidth(self.footer, "100%")
         dock.setCellWidth(self.sidebar, "200px")
 
         History.addHistoryListener(self)
@@ -73,8 +75,27 @@ class Tabs:
         print "initial token", initToken
 
         RootPanel().add(dock)
+        self.dock = dock
 
         self.loadPageList()
+
+        Window.addWindowResizeListener(self)
+
+        DeferredCommand.add(self)
+
+    def execute(self):
+        self.onWindowResized(Window.getClientWidth(), Window.getClientHeight())
+
+    def onWindowResized(self, width, height):
+
+        tabwidth = "%dpx" % (width - 350)
+        #width = "%dpx" % (width-20)
+        #self.header.setWidth(width)
+        #self.dock.setCellWidth(self.header, width)
+        #self.footer.setWidth(width)
+        #self.dock.setCellWidth(self.footer, width)
+        self.fTabs.setWidth(tabwidth)
+        self.dock.setCellWidth(self.fTabs, tabwidth)
 
     def createPage(self, title, purpose, text):
 
