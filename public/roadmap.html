@@ -1,0 +1,55 @@
+<div id="content">
+<h2>Pyjamas Roadmap</h2>
+<p>
+As Pyjamas comprises several projects, each has its own future and direction.
+</p>
+<h3>Pyjamas Compiler</h2>
+<p>
+<ul>
+<li /> Add support for exec and eval (like Skulpt).
+<li /> Improve the python interoperability support for --strict, with the
+       goal of providing full and complete python interoperability for this
+       mode.
+<li /> Provide a complete suite of interoperable python modules.
+<li /> Be able to run and pass the standard http://python.org test suite,
+       under pyv8run and pysmrun (all 25,000 regression tests).
+<li /> Add decorators to all functions which allow the declaration of the types
+       of parameters and the return result, and enhance the compiler so that
+       it optimises the generated code.  One of the flaws of the python
+       programming language is that every operation (+, -, len etc.) requires
+       double-checking the type of the object, and http://python.org
+       always check whether the two types are integers, then moves into
+       complex detection and type coercion second.  Converting this logic
+       to javascript has proved to be very expensive for --strict.
+       Emacs and PyQT4 solve this by allowing the type of
+       parameters and the return result to be declared in advance.
+<li /> Complete the enhancements work listed in the TODO file.
+</ul>
+</p>
+
+<h3>Pyjamas Widget Set</h2>
+<p>
+<ul>
+<li /> Continue to track GWT Widgets
+<li /> Seek out cool and useful projects to convert to Pyjamas, such as
+       gwt-g3d (WebGL 3D API using new HTML5 features)
+<li /> Make automated conversion of GWT-compliant code into Pyjamas code
+       much easier.
+</ul>
+</p>
+
+<h3>Pyjamas Desktop</h2>
+<p>
+<ul>
+<li /> Add more runtimes, especially for MacOSX and embedded systems.
+<li /> Provide easy-to-install dependencies for all platforms across all
+       computing architectures
+       (webkitgtk is <b>not</b> easy to install on Win32 or MacOSX,
+       neither is pywebkitgtk).
+<li /> Change the startup API so that it uses the HTML loader file to
+       detect the module (just like pyjs)
+<li /> Provide the means to open several web engine windows (support for
+       Window.open) and still have them load and run pyjamas applications.
+</ul>
+</p>
+</div>

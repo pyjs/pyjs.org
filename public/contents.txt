@@ -7,3 +7,4 @@ Tutorials:getting_started.html
 Docs:documentation.html
 Download:download.html
 Developing:developing.html
+Roadmap:roadmap.html
