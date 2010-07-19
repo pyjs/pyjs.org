@@ -1,0 +1,10 @@
+<p>
+The focal filesystem, referenced by file://, is treated as a hostile
+Cross-Site Scripting (XSS) environment.  AJAX now entirely fails on
+Google Chrome, with urls starting with "file://".  You are now forced
+to start up a web server on your local system, and use http://127.0.0.1/.
+Good Luck.  Raise a bugreport with google chrome if you don't like what
+google have done, but please do not raise one with pyjamas: it is not
+our problem.
+</p>
+
