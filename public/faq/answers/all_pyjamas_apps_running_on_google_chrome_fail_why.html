@@ -1,10 +1,15 @@
 <p>
 The focal filesystem, referenced by file://, is treated as a hostile
 Cross-Site Scripting (XSS) environment.  AJAX now entirely fails on
-Google Chrome, with urls starting with "file://".  You are now forced
-to start up a web server on your local system, and use http://127.0.0.1/.
-Good Luck.  Raise a bugreport with google chrome if you don't like what
-google have done, but please do not raise one with pyjamas: it is not
-our problem.
+Google Chrome, with urls starting with "file://".
+There are two different ways to get around this problem:</p>
+<ul>
+<li>Launch Google Chrome with the additional parameter <tt>--allow-file-access-from-files</tt>
+ (or <tt>--disable-web-security</tt>, if you want to be rude), e.g.
+ <pre>google-chrome --allow-file-access-from-files</pre></li>
+<li>Or you start up a web server on your local system, and use http://127.0.0.1/</li>
+</ul>
+<p>
+Please do not raise a bugreport with pyjamas: it is not our fault.
 </p>
 
