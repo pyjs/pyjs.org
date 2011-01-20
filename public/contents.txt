@@ -1,10 +1,8 @@
 About:about.html
 Overview:overview.html
 Features:features.html
-Supported:supported.html
 FAQ:faq/faq.html
-Tutorials:getting_started.html
 Docs:documentation.html
-Download:download.html
+Translator:supported.html
 Developing:developing.html
 Roadmap:roadmap.html
