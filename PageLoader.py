@@ -35,7 +35,7 @@ class PageListLoader:
                 res.append([l[0].strip(), l[1].strip()])
             elif self.purpose == 'faq':
                 fname = process_question(l)
-                print fname, l
+                #print fname, l
                 res.append([l, "faq/answers/%s.html" % fname])
         self.panel.loadPages(res, self.purpose)
 
