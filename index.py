@@ -148,6 +148,8 @@ class Tabs:
         if self.pages.has_key(token):
             idx = self.tab_index[token]
             self.fTabs.selectTab(idx)
+    def onError(self, text, code):
+        print "LOAD ERROR(",code,"):",text
 
     def loadPageList(self):
         HTTPRequest().asyncGet("sidebar.html",
