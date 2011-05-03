@@ -2,7 +2,7 @@ About:about.html
 Overview:overview.html
 Features:features.html
 FAQ:faq/faq.html
-Docs:documentation.html
+Getting Help:documentation.html
 Translator:supported.html
 Developing:developing.html
 Roadmap:roadmap.html
