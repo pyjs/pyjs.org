@@ -176,7 +176,7 @@ class Tabs:
 
 
 if __name__ == '__main__':
-    pyjd.setup("./public/index.html")
+    pyjd.setup("http://127.0.0.1/pyjamas/doc/pyjs_site/public/index.html")
     app = Tabs()
     app.onModuleLoad()
     pyjd.run()
