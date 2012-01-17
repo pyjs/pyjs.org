@@ -3,5 +3,6 @@
 # and buildout in order to make pyjsbuild
 
 options="$*"
-if [ -z $options ] ; then options="-O -m";fi
-../../bin/pyjsbuild --print-statements $options index
+if [ -z $options ] ; then options="--strict -d --no-keep-lib-files --no-compile-inplace";fi
+python ../../bin/pyjsbuild.py --print-statements $options website
+cp -R output/* ../
