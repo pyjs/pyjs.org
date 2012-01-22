@@ -43,6 +43,7 @@ class PrettyTab(Composite):
         self.img.addClickListener(listener)
         self.txt.addClickListener(listener)
 
+
 class Tabs:
 
     def onModuleLoad(self):
@@ -68,10 +69,6 @@ class Tabs:
         dock.setCellHeight(self.header, "270px")
         dock.setCellWidth(self.footer, "100%")
         dock.setCellWidth(self.sidebar, "200px")
-
-        History.addHistoryListener(self)
-        initToken = History.getToken()
-        #print "initial token", initToken
 
         RootPanel().add(dock)
         self.dock = dock
@@ -124,7 +121,9 @@ class Tabs:
         elif title == 'sidebar':
             self.sidebar.setHTML(text)
             return
-
+        
+        # Main content case - tabs etc.
+        
         self.pages[title] = text
         if len(self.pages) != len(self.page_list):
             return
@@ -144,10 +143,24 @@ class Tabs:
                 widget.replaceLinks(use_page_href=False)
         self.fTabs.selectTab(0)
 
+        History.addHistoryListener(self)
+        initToken = History.getToken()
+        #print "initial token", initToken
+        self.onHistoryChanged(initToken)
+        self.fTabs.addTabListener(self)
+        
+    def onBeforeTabSelected(self, sender, tabIndex):
+        return True
+
+    def onTabSelected(self, sender, tabIndex):
+        History.newItem(self.page_list[tabIndex][0])
+        
+                  
     def onHistoryChanged(self, token):
         if self.pages.has_key(token):
             idx = self.tab_index[token]
             self.fTabs.selectTab(idx)
+            
     def onError(self, text, code):
         print "LOAD ERROR(",code,"):",text
 

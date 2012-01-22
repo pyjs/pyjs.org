@@ -11,7 +11,7 @@ For read-only access, use the following:
 <code>git clone git://pyjs.org/git/pyjamas.git</code>
 <p>
 If you would like write-access, please simply ask on the
-<a href="http://lists.pyjs.org/mail">mailing list</a>.
+<a href="./documentation.html#Getting Help">mailing list</a>.
 For developers, use the following (which only works once you have
 sent in an ssh public key):
 </p>
@@ -40,7 +40,7 @@ judgement, and ask for help on the mailing list.
 Lastly - please use the
 <a href="http://code.google.com/p/pyjamas/issues/list">bugtracker</a> to
 report bugs (regardless of how trivial or small); the
-<a href="http://lists.pyjs.org/mail">mailing list</a> to coordinate discussions;
+mailing list to coordinate discussions;
 the <a href="./wiki">pyjamas wiki</a> to create HOWTOs and so on.
 </p>
 
@@ -62,7 +62,8 @@ to install and/or enable a debugger in the browsers that you use:</p>
 <li>For Safari, go to the settings and enable "Development".</li>
 <li>For Chrome, <a href="http://chrispederick.com/work/web-developer/">Web
  Developer</a> has been reported to make your life easier.
-<li>Opera users, you are extremely lucky: Opera has stack tracing by default.</li>
+<li>Opera users, you are extremely lucky: Opera has stack tracing by
+    default.</li>
 </ul>
 
 <p>You should also note that the Pyjamas compiler has a "-d" option
@@ -96,6 +97,61 @@ on how to create your own interactive widget.</p>
 <a href="http://code.google.com/webtoolkit/documentation">
 GWT Documentation</a> for widgets that have ported to pyjamas.</p>
 
+<h2>Sources Overview</h2>
+
+<p>
+The pyjs repo contains both shared libraries (usable in python or
+javascript mode), and "runners" that execute the code (python or
+javascript) on a particular engine.  Here is a quick what-is-what.
+</p>
+
+<div>
+	<b>/addons/</b>: Contributed libraries, added to the pythonpath
+	                when translating code to js<br/>
+	<b>/bin/</b>: Executables created when bootstrapping appear here<br/>
+	<b>/builder/</b>: Just ignore that for now<br/>
+	<b>/contrib/</b>: Miscellaneous helper scripts<br/>
+	<b>/dev/</b>: Just ignore that for now<br/>
+	<b>/doc/</b>: The content of pyjs.org is here<br/>
+	<b>/examples/</b>: Lots of examples with their build scripts
+	                  (also used to test all is ok)<br/>
+	<b>/examples/libtest/</b>: Used for unit-testing, build it and
+	                launch it to have in-browser tests performed<br/>
+	<b>/library/</b>: all common widgets and utilities, with platform
+	                    overides when necessary<br/>
+	<b>/library/gwt/</b>: libs tracking original gwt sources,
+	                        without improvements<br/>
+	<b>/library/pyjamas/</b>: libs mirroring and cross-linking gwt/
+	                        ones, to add pyjamas-specific features<br/>
+	<b>/pgen/</b>: python parsing suite recoded in python<br/>
+	
+	<b>/pygtkweb/</b>: Just ignore that for now<br/>
+	<b>/pyjd/</b>: Desktop runner (executes non-translated code,
+	                on several possible backends)<br/>
+	<b>/pyjs/</b>: Actual python-to-js tools: translator, browser
+	linker, python builtins and stdlib recoded for javascript<br/>
+	<b>/pysm/</b>: Spidermonkey runner (executes js code on that js engine)<br/>
+	<b>/pyv8/</b>: Google V8 runner (executes js code on that js engine)<br/>
+	<b>/tests/</b>: Just ignore that for now<br/>
+	<b>/bootstrap</b>: The script through which everything starts<br/>
+	<b>/test.py</b>: Very useful to easily launch unit-tests
+	                (especially libtest) on several engines<br/>
+</div>
+
+<br/>
+<div>
+Key points to remember: 
+<ul>
+<li>the "/pyjs" part is only used in translated mode, other libraries
+    are used both for translated (browser, pyv8, pysm...) and non-translated
+    (pyjd) modes</li>
+<li>each widget is split between "/library/pyjamas/ui/" and
+    "/library/gwt/ui/" trees, to differenciate legacy and pyjamas-added
+    features</li>
+<li>for testing, "/test.py" and compiled "/examples/libtest" are your
+    best allies</li>
+</ul>
+</div>
 
 </div>
 

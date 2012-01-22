@@ -34,3 +34,4 @@ How can i "trust" the pyjamas compiler?
 I'm getting memory leaks in IE6 under XP and Win2000
 How do I help with development of Pyjamas?
 All pyjamas apps running on Google Chrome fail! Why??
+What are all those other pyjs websites I've crossed?
