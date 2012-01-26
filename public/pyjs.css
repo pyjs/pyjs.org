@@ -599,6 +599,19 @@ a:visited {
     padding: 0px;
 }
 
+dl.concise dt {
+    float: left;
+    clear: left;
+    font-weight: bold;
+    padding-right: 0.4em;
+    height: 1.1em;  /* Chrome oddie! */
+}
+
+dl.concise dt::after {
+    content: ":";
+    font-weight: normal;
+}
+
 .code {
     font-size: small;
     margin-left: 50px;
@@ -674,7 +687,8 @@ h2 {
     font-family: Helvetica,Arial,sans-serif;
 }
 
-ul.spaced li, ol.spaced li {
+ul.spaced li,
+ol.spaced li {
     padding: 0.5em;
 }
 
