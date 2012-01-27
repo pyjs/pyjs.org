@@ -633,8 +633,13 @@ dl.concise dt::after {
     float: right;
 }
 #logo {
-    float:left;
+    float: left;
     margin: 0 2em;
+}
+#donation {
+    position: absolute;
+    top: 180px;
+    left: 57px;
 }
 span.p {
     color: rgb(102, 0, 153)
