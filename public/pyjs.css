@@ -6,7 +6,6 @@ body {
   font-family: sans-serif;
 }
 
-
 a {
   color: darkblue;
 }
@@ -620,6 +619,18 @@ dl.concise dt::after {
     padding: 10px;
     border: 1px solid;
 }
+
+#bootstrap-loader {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    padding-top: 150px;
+    text-align: center;
+}
+#bootstrap-loader p {
+    margin-bottom: 4px;
+}
+
 #content {
     margin: 2em;
 }
@@ -661,13 +672,13 @@ span.m {
 }
 #downloadnow code {
     color: white;
-    text-weight: bold;
+    font-weight: bold;
 }
 .c {
-    text-align: center
+    text-align: center;
 }
 #tabs {
-    text-align: center
+    text-align: center;
 }
 #tabs ul {
     list-style: none;
