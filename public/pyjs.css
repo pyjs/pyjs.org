@@ -6,7 +6,6 @@ body {
   font-family: sans-serif;
 }
 
-
 a {
   color: darkblue;
 }
@@ -579,13 +578,37 @@ a:visited {
 .sidebar {
     margin-left: 2em;
     margin-right: 1em;
-    font-size:0.8em;
+    font-size: 0.8em;
+}
+
+.sidebar dl dt {
+    float: left;
+    clear: left;
+    font-weight: bold;
+    padding-right: 0.4em;
+}
+
+.sidebar dl dd {
+    margin: 0;
 }
 
 .sidebar ul {
-    list-style:none;
-    margin:0px;
-    padding:0px;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+dl.concise dt {
+    float: left;
+    clear: left;
+    font-weight: bold;
+    padding-right: 0.4em;
+    height: 1.1em;  /* Chrome oddie! */
+}
+
+dl.concise dt::after {
+    content: ":";
+    font-weight: normal;
 }
 
 .code {
@@ -596,6 +619,18 @@ a:visited {
     padding: 10px;
     border: 1px solid;
 }
+
+#bootstrap-loader {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    padding-top: 150px;
+    text-align: center;
+}
+#bootstrap-loader p {
+    margin-bottom: 4px;
+}
+
 #content {
     margin: 2em;
 }
@@ -603,14 +638,19 @@ a:visited {
     padding: 1em; 
     background-color: rgb(102, 0, 153); 
     color: white;
-    margin:0;
+    margin: 0;
 }
 #nascar {
     float: right;
 }
 #logo {
-    float:left;
-    margin:0 2em;
+    float: left;
+    margin: 0 2em;
+}
+#donation {
+    position: absolute;
+    top: 180px;
+    left: 57px;
 }
 span.p {
     color: rgb(102, 0, 153)
@@ -624,42 +664,47 @@ span.m {
 #downloadnow {
     background: #d400ba;
     border-bottom: 3px solid rgb(102, 0, 153);
-    text-align:center;
-    padding:0.2em 1em 1em 1em;
+    text-align: center;
+    padding: 0.2em 1em 1em 1em;
 }
 #downloadnow a {
-    color:white;
+    color: white;
 }
 #downloadnow code {
-    color:white;
-    text-weight:bold;
+    color: white;
+    font-weight: bold;
 }
 .c {
-    text-align: center
+    text-align: center;
 }
 #tabs {
-    text-align:center
+    text-align: center;
 }
 #tabs ul {
-	list-style: none;
-	padding:0;
-	margin:0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 #tabs li {
-	display: inline;
-	border: solid;
-	border-width: 0px 1px 1px 1px;
-	margin: 0 0.5em 0 0;
+    display: inline;
+    border: solid;
+    border-width: 0px 1px 1px 1px;
+    margin: 0 0.5em 0 0;
     background-color: rgb(102, 0, 153); 	
 }
 #tabs li a {
-	padding: 0 1em;
-	color:white;
-    text-decoration:  none;
+    padding: 0 1em;
+    color: white;
+    text-decoration: none;
 }
 
 h2 {
-font-weight: bold;
-font-family: Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    font-family: Helvetica,Arial,sans-serif;
+}
+
+ul.spaced li,
+ol.spaced li {
+    padding: 0.5em;
 }
 

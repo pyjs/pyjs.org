@@ -1,3 +1,4 @@
+
 <div id="content">
 
 <h2>Source Code</h2>
@@ -62,7 +63,8 @@ to install and/or enable a debugger in the browsers that you use:</p>
 <li>For Safari, go to the settings and enable "Development".</li>
 <li>For Chrome, <a href="http://chrispederick.com/work/web-developer/">Web
  Developer</a> has been reported to make your life easier.
-<li>Opera users, you are extremely lucky: Opera has stack tracing by default.</li>
+<li>Opera users, you are extremely lucky: Opera has stack tracing by
+    default.</li>
 </ul>
 
 <p>You should also note that the Pyjamas compiler has a "-d" option
@@ -99,47 +101,72 @@ GWT Documentation</a> for widgets that have ported to pyjamas.</p>
 <h2>Sources Overview</h2>
 
 <p>
-The pyjs repo contains both shared libraries (usable in python or javascript mode),
-and "runners" that execute the code (python or javascript) on a particular engine. 
-Here is a quick what-is-what.
+The pyjs repo contains both shared libraries (usable in python or
+javascript mode), and "runners" that execute the code (python or
+javascript) on a particular engine.  Here is a quick what-is-what.
 </p>
 
-<div>
-	<b>/addons/</b>: Contributed libraries, added to the pythonpath when translating code to js<br/>
-	<b>/bin/</b>: Executables created when bootstrapping appear here<br/>
-	<b>/builder/</b>: Just ignore that for now<br/>
-	<b>/contrib/</b>: Miscellaneous helper scripts<br/>
-	<b>/dev/</b>: Just ignore that for now<br/>
-	<b>/doc/</b>: The content of pyjs.org is here<br/>
-	
-	<b>/examples/</b>: Lots of examples with their build scripts (also used to test all is ok)<br/>
-	<b>/examples/libtest/</b>: Used for unit-testing, build it and launch it to have in-browser tests performed<br/>
-	
-	<b>/library/</b>: all common widgets and utilities, with platform overides when necessary<br/>
-	<b>/library/gwt/</b>: libs tracking original gwt sources, without improvements<br/>
-	<b>/library/pyjamas/</b>: libs mirroring and cross-linking gwt/ ones, to add pyjamas-specific features<br/>
-	<b>/pgen/</b>: python parsing suite recoded in python<br/>
-	
-	<b>/pygtkweb/</b>: Just ignore that for now<br/>
-	<b>/pyjd/</b>: Desktop runner (executes non-translated code, on several possible backends)<br/>
-	<b>/pyjs/</b>: Actual python-to-js tools: translator, browser linker, python builtins and stdlib recoded for javascript<br/>
-	<b>/pysm/</b>: Spidermonkey runner (executes js code on that js engine)<br/>
-	<b>/pyv8/</b>: Google V8 runner (executes js code on that js engine)<br/>
-	<b>/tests/</b>: Just ignore that for now<br/>
-	<b>/bootstrap</b>: The script through which everything starts<br/>
-	<b>/test.py</b>: Very useful to easily launch unit-tests (especially libtest) on several engines<br/>
-</div>
+<dl class="concise">
+<dt>/addons/</dt>
+  <dd>Contributed libraries, added to the pythonpath when translating
+      code to js</dd>
+<dt>/bin/</dt>
+  <dd>Executables created when bootstrapping appear here</dd>
+<dt>/builder/</dt>
+  <dd>Just ignore that for now</dd>
+<dt>/contrib/</dt>
+  <dd>Miscellaneous helper scripts</dd>
+<dt>/dev/</dt>
+  <dd>Just ignore that for now</dd>
+<dt>/doc/</dt>
+  <dd>The content of pyjs.org is here</dd>
+<dt>/examples/</dt>
+  <dd>Lots of examples with their build scripts (also used to test all
+        is ok)</dd>
+<dt>/examples/libtest/</dt>
+  <dd>Used for unit-testing, build it and launch it to have in-browser
+        tests performed</dd>
+<dt>/library/</dt>
+  <dd>All common widgets and utilities, with platform overides when
+        necessary</dd>
+<dt>/library/gwt/</dt>
+  <dd>libs tracking original gwt sources, without improvements</dd>
+<dt>/library/pyjamas/</dt>
+  <dd>libs mirroring and cross-linking gwt/ ones, to add pyjamas-specific
+  features</dd>
+<dt>/pgen/</dt>
+  <dd>Python parsing suite recoded in python</dd>
+<dt>/pygtkweb/</dt>
+  <dd>Just ignore that for now</dd>
+<dt>/pyjd/</dt>
+  <dd>Desktop runner (executes non-translated code, on several possible
+        backends)</dd>
+<dt>/pyjs/</dt>
+  <dd>Actual python-to-js tools: translator, browser linker, python
+        builtins and stdlib recoded for javascript</dd>
+<dt>/pysm/</dt>
+  <dd>Spidermonkey runner (executes js code on that js engine)</dd>
+<dt>/pyv8/</dt>
+  <dd>Google V8 runner (executes js code on that js engine)</dd>
+<dt>/tests/</dt>
+  <dd>Just ignore that for now</dd>
+<dt>/bootstrap</dt>
+  <dd>The script through which everything starts</dd>
+<dt>/test.py</dt>
+  <dd>Very useful to easily launch unit-tests (especially libtest)
+        on several engines</dd>
+</dl>
 
-<br/>
-<div>
-Key points to remember: 
+<p>Key points to remember:</p>
 <ul>
-<li>the "/pyjs" part is only used in translated mode, other libraries are used both
-for translated (browser, pyv8, pysm...) and non-translated (pyjd) modes</li>
-<li>each widget is split between "/library/pyjamas/ui/" and "/library/gwt/ui/" trees, to differenciate legacy and pyjamas-added features</li>
-<li>for testing, "/test.py" and compiled "/examples/libtest" are your best allies</li>
+<li>the "/pyjs" part is only used in translated mode, other libraries
+    are used both for translated (browser, pyv8, pysm...) and non-translated
+    (pyjd) modes</li>
+<li>each widget is split between "/library/pyjamas/ui/" and
+    "/library/gwt/ui/" trees, to differenciate legacy and pyjamas-added
+    features</li>
+<li>for testing, "/test.py" and compiled "/examples/libtest" are your
+    best allies</li>
 </ul>
-</div>
 
 </div>
-
