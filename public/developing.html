@@ -1,31 +1,27 @@
-
 <div id="content">
 
 <h2>Source Code</h2>
 
-<p>
-The pyjamas project is using
+<p>The pyjamas project is using
 <a href="http://github.com/sitaramc/gitolite">gitolite</a> to manage
-the git repositories.
-For read-only access, use the following:
-</p>
+the git repositories.  For read-only access, use the following:</p>
+
 <code>git clone git://pyjs.org/git/pyjamas.git</code>
-<p>
-If you would like write-access, please simply ask on the
-<a href="./documentation.html#Getting Help">mailing list</a>.
+
+<p>If you would like write-access, please simply ask on the
+<a href="./documentation.html#Getting%20Help">mailing list</a>.
 For developers, use the following (which only works once you have
-sent in an ssh public key):
-</p>
+sent in an ssh public key):</p>
+
 <code>git clone gitolite@pyjs.org:pyjamas</code>
-<p>
-There is also a public git browser (a pyjamas app!) at:
-</p>
+
+<p>There is also a public git browser (a pyjamas app!) at:</p>
+
 <code><a href="http://pyjs.org/pygit">http://pyjs.org/pygit</a></code>
 
 <h2>Pyjamas Developer Guidelines</h2>
 
-<p>
-In the Pyjamas repository is a file DEVELOPER.RULES.  As long as you
+<p>In the Pyjamas repository is a file DEVELOPER.RULES.  As long as you
 follow those rules, you can do what you like.  The trickiest part about
 Pyjamas is remembering that it is several separate projects.  For
 example: modifying the javascript compiler has absolutely nothing to do
@@ -35,15 +31,13 @@ and testing using both --strict and -O on the five web platforms, and
 testing under nearly <b>ten</b> web browsers (Firefox 2 to 4; Opera 9 to 10.5;
 Safari 3 and 4; Google Chrome; IE 6 and above, and so on).  Clearly, this
 is an impossible task but you should make the best efforts and use your
-judgement, and ask for help on the mailing list.
-</p>
-<p>
-Lastly - please use the
+judgement, and ask for help on the mailing list.</p>
+
+<p>Lastly - please use the
 <a href="http://code.google.com/p/pyjamas/issues/list">bugtracker</a> to
-report bugs (regardless of how trivial or small); the
-mailing list to coordinate discussions;
-the <a href="./wiki">pyjamas wiki</a> to create HOWTOs and so on.
-</p>
+report bugs (regardless of how trivial or small);
+the mailing list to coordinate discussions; the
+<a href="./wiki">pyjamas wiki</a> to create HOWTOs and so on.</p>
 
 <h2>How to set up a Web development environment</h2>
 
@@ -55,16 +49,15 @@ to install and/or enable a debugger in the browsers that you use:</p>
 
 <ul>
 <li>For Firefox, install both
- <a href="https://addons.mozilla.org/de/firefox/addon/javascript-debugger/">Venkman</a>
- and <a href="https://addons.mozilla.org/de/firefox/addon/firebug/">Firebug</a>.</li>
+  <a href="https://addons.mozilla.org/de/firefox/addon/javascript-debugger/">Venkman</a>
+  and <a href="https://addons.mozilla.org/de/firefox/addon/firebug/">Firebug</a>.</li>
 <li>For IE, install the
- <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=2f465be0-94fd-4569-b3c4-dffdf19ccd99&DisplayLang=en">Microsoft
- Script Debugger</a>.</li>
+   <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=2f465be0-94fd-4569-b3c4-dffdf19ccd99&amp;DisplayLang=en">Microsoft
+   Script Debugger</a>.</li>
 <li>For Safari, go to the settings and enable "Development".</li>
 <li>For Chrome, <a href="http://chrispederick.com/work/web-developer/">Web
- Developer</a> has been reported to make your life easier.
-<li>Opera users, you are extremely lucky: Opera has stack tracing by
-    default.</li>
+  Developer</a> has been reported to make your life easier.
+<li>Opera users, you are extremely lucky: Opera has stack tracing by default.</li>
 </ul>
 
 <p>You should also note that the Pyjamas compiler has a "-d" option
@@ -100,16 +93,14 @@ GWT Documentation</a> for widgets that have ported to pyjamas.</p>
 
 <h2>Sources Overview</h2>
 
-<p>
-The pyjs repo contains both shared libraries (usable in python or
+<p>The pyjs repo contains both shared libraries (usable in python or
 javascript mode), and "runners" that execute the code (python or
-javascript) on a particular engine.  Here is a quick what-is-what.
-</p>
+javascript) on a particular engine.  Here is a quick what-is-what.</p>
 
 <dl class="concise">
 <dt>/addons/</dt>
-  <dd>Contributed libraries, added to the pythonpath when translating
-      code to js</dd>
+  <dd>Contributed libraries, added to the pythonpath when translating code to
+    js</dd>
 <dt>/bin/</dt>
   <dd>Executables created when bootstrapping appear here</dd>
 <dt>/builder/</dt>
@@ -121,14 +112,14 @@ javascript) on a particular engine.  Here is a quick what-is-what.
 <dt>/doc/</dt>
   <dd>The content of pyjs.org is here</dd>
 <dt>/examples/</dt>
-  <dd>Lots of examples with their build scripts (also used to test all
-        is ok)</dd>
+  <dd>Lots of examples with their build scripts (also used to test all is
+    ok)</dd>
 <dt>/examples/libtest/</dt>
   <dd>Used for unit-testing, build it and launch it to have in-browser
-        tests performed</dd>
+    tests performed</dd>
 <dt>/library/</dt>
   <dd>All common widgets and utilities, with platform overides when
-        necessary</dd>
+    necessary</dd>
 <dt>/library/gwt/</dt>
   <dd>libs tracking original gwt sources, without improvements</dd>
 <dt>/library/pyjamas/</dt>
@@ -140,10 +131,10 @@ javascript) on a particular engine.  Here is a quick what-is-what.
   <dd>Just ignore that for now</dd>
 <dt>/pyjd/</dt>
   <dd>Desktop runner (executes non-translated code, on several possible
-        backends)</dd>
+    backends)</dd>
 <dt>/pyjs/</dt>
-  <dd>Actual python-to-js tools: translator, browser linker, python
-        builtins and stdlib recoded for javascript</dd>
+  <dd>Actual python-to-js tools: translator, browser linker, python builtins
+    and stdlib recoded for javascript</dd>
 <dt>/pysm/</dt>
   <dd>Spidermonkey runner (executes js code on that js engine)</dd>
 <dt>/pyv8/</dt>
@@ -153,20 +144,20 @@ javascript) on a particular engine.  Here is a quick what-is-what.
 <dt>/bootstrap</dt>
   <dd>The script through which everything starts</dd>
 <dt>/test.py</dt>
-  <dd>Very useful to easily launch unit-tests (especially libtest)
-        on several engines</dd>
+  <dd>Very useful to easily launch unit-tests (especially libtest) on
+    several engines</dd>
 </dl>
 
 <p>Key points to remember:</p>
 <ul>
 <li>the "/pyjs" part is only used in translated mode, other libraries
-    are used both for translated (browser, pyv8, pysm...) and non-translated
-    (pyjd) modes</li>
+  are used both for translated (browser, pyv8, pysm...) and non-translated
+  (pyjd) modes</li>
 <li>each widget is split between "/library/pyjamas/ui/" and
-    "/library/gwt/ui/" trees, to differenciate legacy and pyjamas-added
-    features</li>
+  "/library/gwt/ui/" trees, to differenciate legacy and pyjamas-added
+  features</li>
 <li>for testing, "/test.py" and compiled "/examples/libtest" are your
-    best allies</li>
+  best allies</li>
 </ul>
 
 </div>
