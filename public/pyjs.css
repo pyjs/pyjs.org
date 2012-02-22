@@ -624,7 +624,7 @@ dl.concise dt::after {
     position: absolute;
     z-index: -1;
     width: 100%;
-    padding-top: 150px;
+    padding-top: 130px;
     text-align: center;
 }
 #bootstrap-loader p {
@@ -634,24 +634,59 @@ dl.concise dt::after {
 #content {
     margin: 2em;
 }
+
 #masthead {
     padding: 1em; 
     background-color: rgb(102, 0, 153); 
     color: white;
     margin: 0;
 }
+#masthead h1 {
+    /* hide top-level header but still allow web accessibility */
+    position: fixed;
+    top: -999px;
+}
 #nascar {
     float: right;
 }
 #logo {
     float: left;
-    margin: 0 2em;
+    margin: 0 2em 2em 2em;
+}
+#title {
+    position: relative;
+    top: 7px;
 }
 #donation {
     position: absolute;
-    top: 180px;
+    top: 163px;
     left: 57px;
 }
+#mastbottom {
+    background: #d400ba;
+    border-bottom: 3px solid rgb(102, 0, 153);
+    padding: 0.2em 1em 3em 1em;
+    color: white;
+}
+#mastbottom h2 {
+    display: inline;
+}
+#downloadnow {
+    position: relative;
+    top: -0.7em;
+    right: 3em;
+    float: right;
+    text-align: center;
+}
+#downloadnow a {
+    color: white;
+}
+#downloadnow code {
+    font-weight: bold;
+    position: relative;
+    top: -0.6em;
+}
+
 span.p {
     color: rgb(102, 0, 153)
 }
@@ -660,19 +695,6 @@ span.g {
 }
 span.m {
     color: #d400ba;
-}
-#downloadnow {
-    background: #d400ba;
-    border-bottom: 3px solid rgb(102, 0, 153);
-    text-align: center;
-    padding: 0.2em 1em 1em 1em;
-}
-#downloadnow a {
-    color: white;
-}
-#downloadnow code {
-    color: white;
-    font-weight: bold;
 }
 .c {
     text-align: center;

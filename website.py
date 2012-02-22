@@ -49,7 +49,7 @@ class Tabs:
     def onModuleLoad(self):
 
         dock = DockPanel()
-        self.header = HTML(Width="100%", Height="270px")
+        self.header = HTML(Width="100%", Height="220px")
         self.footer = HTML(Width="100%")
         self.sidebar = HTML(Width="200px", Height="100%", StyleName="sidebar")
         self.fTabs = DecoratedTabPanel(Size=("100%", "100%"),
@@ -66,7 +66,7 @@ class Tabs:
         dock.setCellVerticalAlignment(self.fTabs, HasAlignment.ALIGN_TOP)
         #dock.setCellHorizontalAlignment(self.fTabs, HasAlignment.ALIGN_CENTER)
         dock.setCellWidth(self.header, "100%")
-        dock.setCellHeight(self.header, "270px")
+        dock.setCellHeight(self.header, "220px")
         dock.setCellWidth(self.footer, "100%")
         dock.setCellWidth(self.sidebar, "200px")
 
