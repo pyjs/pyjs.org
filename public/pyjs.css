@@ -3,7 +3,7 @@ body {
   color: black;
   margin: 0px;
   padding: 0px;
-  font-family: sans-serif;
+  font-family: Arial,Helvetica,sans-serif;
 }
 
 a {
@@ -101,7 +101,6 @@ a:visited {
 }
 
 .gwt-TabPanelBottom {
-  border-left: 1px solid #87B3FF;
 }
 
 .gwt-TabBar {
@@ -632,7 +631,7 @@ dl.concise dt::after {
 }
 
 #content {
-    margin: 2em;
+    margin: 2em 2em 2em 0.5em;
 }
 
 #masthead {
@@ -657,11 +656,6 @@ dl.concise dt::after {
     position: relative;
     top: 7px;
 }
-#donation {
-    position: absolute;
-    top: 163px;
-    left: 57px;
-}
 #mastbottom {
     background: #d400ba;
     border-bottom: 3px solid rgb(102, 0, 153);
@@ -670,6 +664,11 @@ dl.concise dt::after {
 }
 #mastbottom h2 {
     display: inline;
+}
+#donation {
+    position: absolute;
+    top: 67px;
+    right: 20px;
 }
 #downloadnow {
     position: relative;
@@ -722,11 +721,10 @@ span.m {
 
 h2 {
     font-weight: bold;
-    font-family: Helvetica,Arial,sans-serif;
+    font-family: Arial,Helvetica,sans-serif;
 }
 
 ul.spaced li,
 ol.spaced li {
     padding: 0.5em;
 }
-
