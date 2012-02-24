@@ -620,6 +620,9 @@ dl.concise dt::after {
     padding: 10px;
     border: 1px solid;
 }
+.strong {
+    font-weight: bold;
+}
 
 #bootstrap-loader {
     position: absolute;
@@ -745,7 +748,32 @@ h2 {
     font-family: Arial,Helvetica,sans-serif;
 }
 
+p.center {
+    text-align: center;
+}
+
 ul.spaced li,
 ol.spaced li {
     padding: 0.5em;
+}
+ol.left {
+    padding-left: 0;
+}
+ol li.one,
+ol li.two,
+ol li.three,
+ol li.four {
+    list-style-position: inside;
+}
+ol li.one {
+    list-style-image: url('./img/num1.png');
+}
+ol li.two {
+    list-style-image: url('./img/num2.png');
+}
+ol li.three {
+    list-style-image: url('./img/num3.png');
+}
+ol li.four {
+    list-style-image: url('./img/num4.png');
 }
