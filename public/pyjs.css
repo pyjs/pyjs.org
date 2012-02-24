@@ -1,8 +1,8 @@
 body {
   background-color: white;
   color: black;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   font-family: Arial,Helvetica,sans-serif;
 }
 
@@ -567,11 +567,13 @@ a:visited {
 
 /* additional site CSS */
 .tabs {
-    margin: 2em;
+    margin: 0 2em 0 2em;
+    position: relative;
+    top: -49px;
 }
 
 .faq {
-    margin: 2em;
+    margin: 2em 2em 2em 0.5em;
 }
 
 .sidebar {
@@ -635,26 +637,16 @@ dl.concise dt::after {
 }
 
 #masthead {
-    padding: 1em; 
+    margin: 0;
+    padding: 1em;
     background-color: rgb(102, 0, 153); 
     color: white;
-    margin: 0;
+    font-weight: bold;
 }
 #masthead h1 {
     /* hide top-level header but still allow web accessibility */
     position: fixed;
     top: -999px;
-}
-#nascar {
-    float: right;
-}
-#logo {
-    float: left;
-    margin: 0 2em 2em 2em;
-}
-#title {
-    position: relative;
-    top: 7px;
 }
 #mastbottom {
     background: #d400ba;
@@ -665,10 +657,36 @@ dl.concise dt::after {
 #mastbottom h2 {
     display: inline;
 }
+#mastfooter {
+    background: #d400ba;
+    color: white;
+    font-size: smaller;
+    font-weight: bold;
+    border-top: 1px solid rgb(102, 0, 153);
+    border-bottom: 3px solid rgb(102, 0, 153);
+    padding: 0.3em 2em 0.3em 2em;
+}
+#mastfooter a {
+    color: white;
+}
+#logo {
+    float: left;
+    margin: 0 2em 2em 2em;
+}
+#title {
+    position: relative;
+    top: 7px;
+}
+#mascot {
+    float: right;
+    position: relative;
+    top: -23px;
+}
 #donation {
     position: absolute;
     top: 67px;
     right: 20px;
+    border: 0;
 }
 #downloadnow {
     position: relative;
@@ -678,6 +696,9 @@ dl.concise dt::after {
     text-align: center;
 }
 #downloadnow a {
+    color: white;
+}
+{
     color: white;
 }
 #downloadnow code {
