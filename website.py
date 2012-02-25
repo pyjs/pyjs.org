@@ -153,9 +153,11 @@ class Tabs:
         return True
 
     def onTabSelected(self, sender, tabIndex):
-        History.newItem(self.page_list[tabIndex][0])
-        
-                  
+        current_token = History.getToken()
+        new_token = self.page_list[tabIndex][0]
+        if current_token != new_token:
+            History.newItem(new_token) 
+            
     def onHistoryChanged(self, token):
         if self.pages.has_key(token):
             idx = self.tab_index[token]
@@ -193,4 +195,3 @@ if __name__ == '__main__':
     app = Tabs()
     app.onModuleLoad()
     pyjd.run()
-
