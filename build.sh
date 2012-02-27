@@ -4,5 +4,9 @@
 
 options="$*"
 if [ -z $options ] ; then options="--strict -d --no-keep-lib-files --no-compile-inplace";fi
-python ../../bin/pyjsbuild.py --print-statements $options website
+
+# please stop changing this to run solely and exclusively on windows
+# please stop changing it to python pyjsbuild.py because that is exclusive
+# to windows.
+../../bin/pyjsbuild --print-statements $options website
 cp -R output/* ../
