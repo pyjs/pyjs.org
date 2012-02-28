@@ -28,7 +28,7 @@ I've upgraded to Pyjamas 0.5 (or above) and I get a blank screen.
 I've upgraded to svn r785 or greater (or Pyjamas 0.6) and I want to use PyJD
 I love/prefer {insert AJAX / Javascript framework here}, how do I use it?
 huh? why?? Some of the widgets in DojoX / Ext-JS are really cute!  I want them! waaah!
-I'm installing hulahop and python-xpcom on Pyjamas-Desktop on Ubuntu 9, but it don't work, it all broke!
+I'm installing hulahop and python-xpcom on Pyjamas Desktop on Ubuntu 9, but it don't work, it all broke!
 I'm evaluating GWT and Pyjamas, and I don't know which one to choose.
 How can i "trust" the pyjamas compiler?
 I'm getting memory leaks in IE6 under XP and Win2000
