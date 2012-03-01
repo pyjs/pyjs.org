@@ -95,8 +95,12 @@ class Tabs:
 
     def createPage(self, title, purpose, text):
 
+        print "create page", title, purpose, text
         if purpose == 'faq':
             self.faq_pages[title] = text
+            print len(self.faq_pages), len(self.faq_list)
+            print self.faq_pages.keys()
+            print self.faq_list
             if len(self.faq_pages) != len(self.faq_list):
                 return
             faq = self.page_widgets['FAQ']
