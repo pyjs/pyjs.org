@@ -1,0 +1,209 @@
+As part of a reorganisation of <a href="http://pyjs.org">Pyjamas</a>,
+best known as a python port of GWT, dynamic module loading using AJAX has
+been added.  The deployment of dynamic module loading results in over a 60%
+reduction in the amount of javascript cache file sizes, as the
+modules can be shared across multiple platforms (GAE pyjamas users
+are hitting the app engine limit even with the simplest of apps,
+due to the old one-cache-file-per-platform design).
+
+This article describes how the standard technique for dynamic loading
+of javascript scripts was used as a basis for bring python "import"
+semantics to a javascript compiler.
+
+<b>What's the issue?</b>
+
+The issue is this: static compilation of javascript used to be done
+by placing the entire output into a single cache file.  Every single
+module imported was duplicated, five times (for each module).  Although
+the the python libraries from pyjamas are only about 6,000 lines, the
+output from pyjamas is quite verbose in order to make it readable and
+also to provide python "class" semantics on top of javascript "prototype"
+semantics (in exactly the way as is done by extjs, for example, but
+extjs does it by hand).
+
+How verbose?  well - those 6,000 lines of libraries result in 500k of
+javascript output.  per platform.  and there are five platforms.
+Although HTTP 1.1 Compression results in anything between an 8:1 and
+a 10:1 compression ratio (thanks to the output being so verbose),
+there is still quite an incentive to reduce the amount of javascript
+generated.
+
+Additionally, the "single file" design made it very impractical for
+other projects to take advantage of the pyjamas compiler.  With a split
+dynamic design, it becomes possible for other projects to consider
+dynamic loading or even creation of modules, or to use a single cache
+file in a totally separate project instead of having a "take it or leave it"
+monster application.
+
+<b>How it's done</b>
+
+starting at the "bottom" of the tree of functionality:
+
+pyjs_load_script, line 143:
+<a
+href="http://pyjamas.svn.sourceforge.net/viewvc/pyjamas/trunk/library/dynamicajax.js?revision=331&view=markup">dynamicajax.js</a>
+
+this is an implementation of "the" standard method for adding
+javascript, dynamically, to a web page.  it creates a < script
+> node, adds a src attribute and appends it to the DOM model.
+the result is that at some point in the future, the browser notices,
+loads the script, and executes it.
+
+i say "executes" - this is where trouble typically occurs, due to
+over-zealous garbage collection by browsers, with the result that
+the output from pyjamas had to undergo a total reorganisation.
+
+pyjamas output used to be entirely global in scope.  module_class.
+module_class_function.  module_globalvariable.   what browsers do
+is that after a dynamically loaded script is run, any functions or
+variables that have not been "attached" to anything in the _global_
+scope (the main scripts), they are automatically and instantly
+garbage-collected.  so, instead of this:
+
+<pre>
+pyjslib_Dict = function() {
+}
+pyjslib_Dict_init = function() {
+    pyjslib_Dict.prototype.__init__ = function() { ... initialise ... }
+}
+</pre>
+
+the compiler output had to be _completely_ reorganised to this:
+
+<pre>
+pyjslib = function () {
+  pyjslib.Dict = function() {
+  }
+  pyjslib.Dict.init = function() {
+    pyjslib.Dict.prototype.__init__ = function() { ... initialise ... }
+  }
+}
+</pre>
+
+followed by, at the _bottom_ of the module, from the compiled output:
+
+    global_module_cache['pyjslib'] = pyjslib();
+
+in this way, every single module has at least one ref-count in the
+browser execution engine, and, given that absolutely _everything_
+is inside the "modulename = function { ..... }", the module doesn't
+get garbage-collected and deleted.
+
+looking at e.g. the design of dojo and the design of extjs, this
+is pretty much what they do anyway (i haven't looked at output from
+GWT because i don't do java development).
+
+the second gotcha was this: dynamic loading of modules is
+asynchronous, yet they are typically imported - especially in a
+dynamic language such as python - synchronously.  the mechanism
+for dealing with this is in place, with a current assumption that
+it's ok to load everything all at once, thanks to being able to
+take note in the compiler of the complete list of all modules.
+
+the key function which kicks off the initial importing,
+and makes a note of the fact, is import_module(), line 22:
+<a
+href="http://pyjamas.svn.sourceforge.net/viewvc/pyjamas/trunk/library/pyjslib.py?revision=331&view=markup">pyjslib.py</a>
+
+this function can operate in both "static" mode - i.e. when the
+code has been compiled entirely into one cache file - and also in
+"dynamic" mode.  also, each of the platform-specific cache files
+has a list of "overrides" on a per-module basis, and in this way,
+in "dynamic" mode, modules which are not platform-specific can
+be shared between platforms, resulting in a dramatic drop in the
+amount of javascript (something like a 60% reduction has been seen
+for the pyjamas kitchensink example).
+
+import_module works therefore in concert with the module
+"boilerplate" template - see lines 12 and 18
+<a
+href="http://pyjamas.svn.sourceforge.net/viewvc/pyjamas/trunk/builder/boilerplate/mod.cache.html?revision=331&view=markup">mod.cache.html</a>
+
+and also with import_wait (see line 120 of pyjslib.py)
+
+preload_app_modules in pyjslib.py is where the loop to wait for
+all the modules to be imported is "kicked off" - but - note that
+preload_app_modules takes a list of lists of modules!  the reason
+for this is to ensure that dependencies are respected.
+
+the list of dependencies is created at compile time, using the pyjs
+compile process itself to ascertain the list of imports that come
+from the compilation of a module - line 333 and 371 of pyjs/build.py:
+<a href="http://pyjamas.svn.sourceforge.net/viewvc/pyjamas/trunk/pyjs/build.py?revision=331&view=markup">build.py</a>
+
+note the use of the function "add_subdeps()".  this function takes
+pyjamas.ui.HTMLPanel and creates a list of dependencies:
+
+['pyjamas', 'pyjamas.ui', 'pyjamas.ui.HTMLPanel']
+
+it is _essential_ to create this list, and to add them to the
+dependencies, so that the modules are dynamically loaded, and thus,
+the global variables (pyjamas and pyjamas.ui) are created before
+pyjamas.ui.HTMLPanel, for example.
+
+so, to recap, here is what is done:
+
+<ul>
+<li /> the global modules is set to {} as a module cache to ensure
+refcounts on dynamic scripts
+
+<li /> the global module_load_request is set to {} and stores the ongoing
+load progress and initialisation status on a per-module basis
+
+<li /> the builder creates a list of lists of module dependencies and
+also a list of platform-specific cache overrides
+
+<li /> the builder generates a cache file which kicks off the dynamic
+loading of every single first-level zero-dependency javascript
+module.  following the kick-off, the application goes into a
+timer-driven loop, waiting for module_load_request[....] of each
+of the modules fired off to be updated
+
+<li /> each module, on dynamic load, puts itself into the global modules
+cache _and_ then updates the module_load_request global variable.
+
+<li /> the application notices the changes to the module_load_request
+global variable status updates and, on completion of all first
+level zero-dependency initialisation, kicks off the second, then
+the third batch until finally all modules are loaded.
+
+<li /> finally, the application module can also be loaded, and finally
+the application can run, confident in the knowledge that all
+dependent modules have been loaded - and, more importantly,
+actually initialised (and in the right order).
+</ul>
+
+the process isn't "perfectly pythonically correct", but it works
+well enough to be useable.
+
+additions later will be made to be able to do "import stylesheet.css"
+which will, in static compile mode, actually create a stylesheet
+text node in the application cache, and in dynamic mode will result
+in not a < script > node being added but a css stylesheet node of
+type text/css being added.  again, platform-specific tricks can be
+deployed, here, allowing per-platform stylesheets to be created in
+both static and dynamic compilation.
+
+also, further work is required - and possible - to fire off the
+initial loading of the dynamic javascript, and to add an extra
+stage in the loader / initialisation process.  the extra stage
+will be simply to "record the existence" of the script in the
+global module cache, rather than run its initialisation function.
+only when another python script _requests_ the import of a module
+("import pyjamas.ui.HTMLTable") will the initialisation function
+for pyjamas.ui.HTMLTable actually be executed.  module_load_request
+states will be extended to keep track of which scripts have loaded,
+which have been recorded, and which have already been "imported"
+by another module's "import" statement.
+
+<b>Conclusion</b>
+
+Respecting python import semantics in javascript is tough, but
+possible.  The benefits for doing so involve anything up to an
+80% reduction in the size of the compiled javascript, thanks to
+being able to share dynamic modules between platforms, of which there
+are five: Mozilla, Old Mozilla (Netscape), IE, Safari and Opera.
+
+Additionally, the dynamic import mechanism can be utilised not only to load javascript, but also to load CSS and other content.  Also, the dynamic javascript loading can be used to import other javascript modules, not just pyjamas-compiled javascript, with the proviso that the modules must be hooked into a global variable in some way into the main application (so as to get a refcount in the javascript execution engine).
+
+Finally, there is also now the possibility for other AJAX projects to make use of the pyjamas python-to-javascript compiler, to create much smaller self-contained modules that will be much easier to integrate and understand.

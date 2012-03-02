@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>pyjamas</title>
+<style type="text/css">
+<!--
+.code {
+margin-left: 50px;
+margin-right: 50px;
+background-color: #f0f0f0;
+padding: 10px;
+border: 1px solid; 
+}   
+body {
+padding: 20px; 
+margin: 20px;
+h2 {
+font-weight: bold;
+font-family: Helvetica,Arial,sans-serif;
+}
+
+--> 
+</style>
+
+</head>
+<body>
+
+<div style="padding: 10px; background-color: rgb(102, 0, 153); font-family: Helvetica,Arial,sans-serif;">
+  <a href="./" title="Home"><img src="./img/pyjamas.128x128.png" alt="Pyjamas Logo"
+   style="float: left; position: relative; top: -2em;" /></a>
+  <big style="font-weight: bold; color: white;"><big><big><big>pyjamas</big></big></big></big><br>
+  <small><br>
+  </small><big><span style="color: white;">build
+  AJAX apps in Python (like Google did for Java)</span></big>
+</div>
+<h2 style="clear: both;">
+       Getting Started with
+       <span style="color: rgb(102, 0, 153);">pyjamas</span>
+</h2>
+<p>
+    Programming with pyjamas needs a little bit of rethinking about
+    the way that you do Web application development.  Primarily,
+    you need to forget virtually everything you've ever learned and
+    come to expect Web development to be.  The reason for this is
+    very simple: Pyjamas is pure javascript.  Although written
+    in python, not javascript, it is <i>essential</i> to bear in mind
+    that virtually 100% of your web application will be javascript -
+    not HTML.  The programming style you may be accustomed to for
+    HTML programming involves placing as much HTML into one page
+    as you can stand, and making the minimum number of exceptions
+    and allowances for dynamic content that you can manage, without
+    making the HTML page "too complicated" to be readable.
+</p>
+<p>
+    Pyjamas makes it possible for you to break pages down into concepts.
+    classes.  widgets.  maybe some CSS styling is added, almost as an
+    afterthought, on top of the "real" functionality.  In other words, Pyjamas
+    is actually more like Desktop application development than it is
+    Web development.
+</p>
+<p>
+    With that in mind, the best possible starting point has to be the
+    <a href="/examples">examples</a>, most of which were ported from
+    Google Web Toolkit.  They will make it really clear just how "not"
+    Web that pyjamas - and incidentally GWT - really are.
+</p>
+<h2>
+        Examples
+</h2>
+<p>
+    The simplest example is of course the traditional
+    <a href="/examples/helloworld/output/Hello.html">Hello World</a>
+    or, in this case, Hello AJAX.  If you've downloaded pyjamas, you
+    will be able to browse, with your browser, to the examples directory
+    and see this in action for yourself.  Type
+    "file://home/yourusername/pyjamas/examples" into your URL bar - or
+    wherever you have unpacked pyjamas to and continue to browse to
+    the helloworld output directory.</a>
+</p>
+<p>
+    Once you have played with the example, online, try it on your local
+    machine.  Remember to run the "build.sh" script (if you have linux
+    or MacOS, or execute python.exe ../../build/build.py Hello.py if
+    you have windows).  Then, take a look at the source code
+    that generated it, which is shown here:
+</p>
+<pre class="code">
+from pyjamas import Window
+from pyjamas.ui import RootPanel, Button
+
+def greet(sender):
+    Window.alert("Hello, AJAX!")
+
+b = Button("Click me", greet)
+RootPanel().add(b)
+</pre>
+<p>
+    The most important thing to note is that everything gets added to
+    <i>RootPanel</i>.  RootPanel() gives you access to the Browser's
+    DOM model (starting of course at <i>body</i>).  To illustrate,
+    try adding this, and see what happens:
+</p>
+<pre class="code">
+        RootPanel().add(HTML("Hello &lt;b&gt;World&lt;/b&gt;"))
+</pre>
+<p>
+    You <i>should</i> get nothing - and if you look in your Javascript
+    console for an error message, you should find an error indicating
+    that "HTML" does not exist.  This is correct - because you needed to
+    add this to the top of the module, along with the other imports:
+</p>
+<pre class="code">
+from pyjamas.ui import HTML
+</pre>
+<p>
+    Now if you re-run build.sh, you should see both a button and next
+    to it the words "Hello <b>World</b>".  Congratulations, you've just
+    successfully developed your first pyjamas application.
+</p>
+<h2>
+    Documentation
+</h2>
+<p>
+    Now you've started on a simple example, and have seen some of the
+    more involved ones, you might want to see a little
+    bit more about what can actually be achieved, so that you can start
+    making your own application.  Whilst the
+    <a href="/examples/kitchensink/output/KitchenSink.html">kitchen sink</a>
+    example covers every single widget in existence, you may find that
+    browsing the source code of this example to be rather inconvenient.
+</p>
+<p>
+    The <a href="/showcase/Showcase.html">showcase</a>, however, contains
+    documentation on each of the main classes in the <i>ui</i> module.
+    It describes how to use each of the classes, what they are for, and,
+    crucially, it includes a working example and the source code for that
+    example.
+</p>
+</p>
+    Additionally, Pyjamas's Documentation is auto-generated from the
+    source code, and there are two locations where this is available.
+    The first is simply a python gendoc-generated version,
+    <a href="/api/">here</a>.  A second version, which uses
+    a modified version of python pydoc.py, will be available later, but if you
+    want to explore it yourself, use pyjamas-desktop, cd into the pyjamas
+    directory, and run "../pydoc.py -w ./" to
+    have the code auto-generated into a docs/ directory.  Then, on each
+    of the modules auto-generated, run build.py on each of them.
+    The most useful of those has been done already:
+    <a href="http://lkcl.net/pyjamas-desktop/docs/output/docui.html">docui</a>
+    can be seen, here, which you may find useful.
+</p>
+<p>
+    So, there is quite a lot for you to be able to get started on your
+    application.  A recommended approach is, like as with any programming,
+    to find a working example that is close to what you want, and cut and
+    paste it into your own code, step-by-step.  Both the showcase and
+    the examples make that much easier to do.
+</p>
+<h2>
+    Create your own Widget Tutorial
+</h2>
+<p>
+    All of the above covers how to use widgets: it doesn't explain how to
+    write one - how to make your own widget.  Fortunately, there's a
+    <a href="./controls_tutorial.html">tutorial</a> on
+    how to do exactly that.  It was inspired by the pygtk2 create-a-widget
+    tutorial, and you may find it interesting to compare just how easy
+    it is to create a widget in pyjamas with how complex it is in pygtk.
+</p>
+</body>
+</html>
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 3:04:44 Jan 30, 2009 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 16:45:19 Apr 29, 2011.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

@@ -1,0 +1,158 @@
+<html>
+<head>
+<style type="text/css">
+<!--
+.code {
+    margin-left: 50px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid;
+}
+body {
+    margin-left: 20px;
+    margin-right: 20px;
+-->
+</style>
+<meta name="description" content="Cross-Platform Python Applications Development Framework and Widget set" />
+<meta name="keywords" content="widgets, widget, framework, python, cross-platform, widget set, applications development framework, development framework, javascript, HTML, CSS, python-qt4, python-gtk2, pygkt2, pygtk, pyqt4, pyqt, wxWidgets, Adobe AIR, AIR, programming, gui, developer, Webkit, PyWebkitGTK, Safari" />
+<title>Pyjamas Desktop</title>
+<body style="margin:20px;">
+<h2>Widget Event Handling and Capture for Pyjamas Widgets</h2>
+<p>
+    Our <a href="./controls_tutorial.html">simple slider widget</a>
+    receives a basic "click" to move the slider.  Of much more interest
+    to us is to be able to drag and move the slider.  Hints were given
+    at the end of that previous tutorial on how to go about creating your own
+    onBrowserEvent() function, and this tutorial will cover events
+    such as drag and move, and keyboard events such as up and down.
+</p>
+<p>
+    (For those people who would like to see the completed source code 
+    in advance and the second demo in action, click <a href="./controls02">here</a>
+    and <a href="http://github.com/lkcl/pyjamas-desktop/tree/master/pyjamas-webkit/pyjamas/Controls.py">here</a>) 
+</p>
+<h3>Vertical Slider 2</h3>
+<p>
+    As we already have a demo slider to work from, we're going to derive
+    from that as a base class.  Our primary focus is to add mouse event
+    handling - up, down, and move.
+</p>
+<pre class="code">
+class VerticalDemoSlider2(VerticalDemoSlider):
+
+    def __init__(self, min_value, max_value, start_value=None):
+
+        VerticalDemoSlider.__init__(self, min_value, max_value, start_value)
+        self.mouseListeners = []
+        self.addMouseListener(self)
+        self.sinkEvents(Event.MOUSEEVENTS)
+        self.dragging = False
+
+    def addMouseListener(self, listener):
+        self.mouseListeners.append(listener)
+
+    def removeMouseListener(self, listener):
+        self.mouseListeners.remove(listener)
+</pre>
+<p>
+    Here, we derive from VerticalDemoSlider, add ourselves as a "mouse
+    listener" - and indicate to the DOM model that we would like to
+    receive notifications about all Mouse Events.  So, when the mouse
+    moves into the widget, we receive a "mouse enter" event; we then also
+    receive all move, down and up events, and, when the mouse moves out,
+    we receive a mouse "leave" event.  All of these events will result
+    in onBrowserEvent being called, which is the next key function needed:
+</p>
+<pre class="code">
+    def onBrowserEvent(self, event):
+        type = DOM.eventGetType(event)
+        if type == "mousedown" or type == "mouseup" or type == "mousemove" or type == "mouseover" or type == "mouseout":
+            MouseListener().fireMouseEvent(self.mouseListeners, self, event)
+
+
+</pre>
+<p>
+    Here, as you can see, it's very straightforward: mouse events are
+    passed to a convenience function - fireMouseEvent - which will call
+    the appropriate handler functions on each of the listeners.  Examining
+    fireMouseEvent, we see that there are five possible functions that
+    could be called (on every one of the listeners, in turn); onMouseDown,
+    onMouseUp, onMouseMove, onMouseLeave and onMouseEnter.
+</p>
+<p>
+    onMouseEnter and onMouseLeave, we are not going to concern ourselves
+    with, so we make those do nothing.  However, if we wanted to make
+    the slider visually "respond" to the mouse hovering over the slider,
+    it is these two functions which would take care of that.
+</p>
+<pre class="code">
+    def onMouseEnter(self, sender):
+        pass
+    def onMouseLeave(self, sender):
+        pass
+</pre>
+<p>
+    The core of the work is done in the remaining three functions.
+    Firstly, onMouseMove, which takes care of translating the mouse
+    pointer's absolute y position into actual movement of the slider:
+</p>
+<pre class="code">
+    def onMouseMove(self, sender, x, y):
+        if not self.dragging:
+            return
+        self.moveSlider(y)
+</pre>
+<p>
+    Notice how we only allow slider movement when "dragging" is set?
+    If we didn't do this, then the slider would immediately start to
+    jump and move when the mouse cursor was placed over the widget.
+    This isn't what we want: we only want the slider to move when
+    a mouse button is held down:
+</p>
+<pre class="code">
+    def onMouseDown(self, sender, x, y):
+        self.dragging = True
+        DOM.setCapture(self.getElement())
+        self.moveSlider(y)
+</pre>
+<p>
+    So, when a mouse down event occurs, we set the "dragging" flag
+    to True, indicate that we want to capture all future events into
+    this widget, and we also move the slider.  The reason for moving
+    the slider is because it is a separate event from "mouse move",
+    and people will get rather annoyed if they click the "mouse button"
+    and see the slider staying where it is.  The reason for capturing
+    mouse events from now on is because people will quite likely
+    move the mouse <i>out</i> of the widget whilst the button is still
+    held down, and they will expect the slider to still move.  Only
+    when they let go of the mouse button will they expect the slider
+    to stop moving about:
+</p>
+<pre class="code">
+    def onMouseUp(self, sender, x, y):
+        self.dragging = False
+        DOM.releaseCapture(self.getElement())
+</pre>
+<p>
+    So, here you can see, we simply indicate that we no longer want
+    the slider to move about when "mouse move" events occur, and we
+    also cancel the capturing of all events.  This is all that's required:
+    the majority of the user-interface hard work was done in the previous
+    tutorial - all we're doing here is calling VerticalDemoSlider.moveSlider()
+    at the appropriate times.
+</p>
+<h3>TODO</h3>
+<p>
+    Keyboard Events and Keyboard Focus
+</p>
+<pre class="code">
+</pre>
+<p>
+</p>
+<pre class="code">
+</pre>
+<p>
+</p>
+</body>
+</html>
+

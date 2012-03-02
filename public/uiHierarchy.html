@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>The ui Module Class Hierarchy</title>
+</head>
+<body>
+<a href="./" title="Home"><img alt="Pyjamas Logo"
+ src="./img/pyjamas.64x64.png" style="float: left;" /></a>
+<h2 style="padding-top: 1em;">The ui Module Class Hierarchy</h2>
+<p>
+The <span style="font-family: monospace; font-weight:bold">ui</span>
+module defines the classes shown in the diagram, below.  All user-interface
+widgets that will place something on-screen are derived from UIObject.
+Anything which takes keyboard as well as mouse input is derived from
+FocusWidget; except for Tree, TabPanel, TabBar and MenuBar, all classes
+that can contain other widgets are derived from Panel.
+</p>
+<p>
+Classes derived from SimplePanel can have one widget added to them. 
+Typically they take the widget as the argument to their constructor, 
+or you use setWidget().  Classes derived from ComplexPanel can have zero 
+or more widgets: they all have add() functions which take no other 
+arguments, except for AbsolutePanel which takes two optional x,y 
+coordinates and DockPanel which takes a zone argument (North, South etc.)
+</p>
+<p>
+HTMLPanel and its derivative classes, Grid and FlexTable are slightly different,
+again, in that their add() functions all take row,column arguments.  They also
+provide Row and Column formatting, so that, in the case of FlexTable, you can
+indicate that a cell should span additional rows and/or columns.
+</p>
+<img style="width: 1059px; height: 702px;" alt="UI Class Hierarchy"
+ src="./img/UIClassHierarchy.png"><br>
+</body>
+</html>
