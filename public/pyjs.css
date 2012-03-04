@@ -642,7 +642,7 @@ dl.concise dt::after {
 #masthead {
     margin: 0;
     padding: 1em;
-    background-color: rgb(102, 0, 153); 
+    background-color: #660099; 
     color: white;
     font-weight: bold;
 }
@@ -653,7 +653,7 @@ dl.concise dt::after {
 }
 #mastbottom {
     background: #d400ba;
-    border-bottom: 3px solid rgb(102, 0, 153);
+    border-bottom: 3px solid #660099;
     padding: 0.2em 1em 3em 1em;
     color: white;
 }
@@ -665,8 +665,8 @@ dl.concise dt::after {
     color: white;
     font-size: smaller;
     font-weight: bold;
-    border-top: 1px solid rgb(102, 0, 153);
-    border-bottom: 3px solid rgb(102, 0, 153);
+    border-top: 1px solid #660099;
+    border-bottom: 3px solid #660099;
     padding: 0.3em 2em 0.3em 2em;
 }
 #mastfooter a {
@@ -694,24 +694,32 @@ dl.concise dt::after {
 #downloadnow {
     position: relative;
     top: -0.7em;
-    right: 3em;
+    right: 2.7em;
     float: right;
+    margin-left: -1.1em;
+    margin-right: -1.1em;
+    padding-left: 0;
+    padding-right: 0;
     text-align: center;
 }
 #downloadnow a {
-    color: white;
-}
-{
     color: white;
 }
 #downloadnow code {
     font-weight: bold;
     position: relative;
     top: -0.6em;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    text-shadow: #660099 1px 1px,
+                 #6a0b99 2px 2px,
+                 #773399 3px 3px,
+                 #7d4499 4px 4px,
+                 #d400ba -1px -1px,
+                 #d400ba -1px 1px;
 }
 
 span.p {
-    color: rgb(102, 0, 153)
+    color: #660099
 }
 span.g {
     color: #009f29;
@@ -735,7 +743,7 @@ span.m {
     border: solid;
     border-width: 0px 1px 1px 1px;
     margin: 0 0.5em 0 0;
-    background-color: rgb(102, 0, 153); 	
+    background-color: #660099; 	
 }
 #tabs li a {
     padding: 0 1em;
