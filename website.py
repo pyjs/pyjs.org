@@ -1,27 +1,29 @@
 import pyjd # dummy in pyjs
 
-from pyjamas.ui.TabBar import TabBar
-from pyjamas.ui.TabPanel import TabPanel
-from pyjamas.ui import HasAlignment
-from pyjamas.ui.Image import Image
-from pyjamas.ui.DockPanel import DockPanel
-from pyjamas.ui import HasAlignment
-from pyjamas.ui.VerticalPanel import VerticalPanel
-from pyjamas.ui.RootPanel import RootPanel
-from pyjamas.ui.HorizontalPanel import HorizontalPanel
-from pyjamas.ui.HTML import HTML
-from pyjamas.ui.Composite import Composite
-#from pyjamas.ui import DecoratorPanel
-from pyjamas.ui import MouseListener
-from pyjamas.ui import Event
-from pyjamas import Window
 from pyjamas import DeferredCommand
+from pyjamas import History
+from pyjamas import logging
+from pyjamas import Window
+from pyjamas.HTTPRequest import HTTPRequest
+from pyjamas.ui import Event
+from pyjamas.ui import HasAlignment
+from pyjamas.ui import MouseListener
+from pyjamas.ui.Composite import Composite
 from pyjamas.ui.DecoratorPanel import DecoratedTabPanel, DecoratorPanel
 from pyjamas.ui.DecoratorPanel import DecoratorTitledPanel
-from pyjamas.HTTPRequest import HTTPRequest
-from PageLoader import PageListLoader, PageLoader
+from pyjamas.ui.DockPanel import DockPanel
+from pyjamas.ui.HorizontalPanel import HorizontalPanel
+from pyjamas.ui.HTML import HTML
 from pyjamas.ui.HTMLLinkPanel import HTMLLinkPanel
-from pyjamas import History
+from pyjamas.ui.Image import Image
+from pyjamas.ui.RootPanel import RootPanel
+from pyjamas.ui.TabBar import TabBar
+from pyjamas.ui.TabPanel import TabPanel
+from pyjamas.ui.VerticalPanel import VerticalPanel
+from PageLoader import PageListLoader, PageLoader
+
+# global logger. Set level to DEBUG to see the log.debug() messages too!
+log = logging.getPrintLogger('pyjs_site', logging.INFO)
 
 #class PrettyTab(DecoratorPanel):
 class PrettyTab(Composite):
@@ -95,12 +97,12 @@ class Tabs:
 
     def createPage(self, title, purpose, text):
 
-        print "create page", title, purpose, text
+        log.debug("create page %s %s %s", title, purpose, text)
         if purpose == 'faq':
             self.faq_pages[title] = text
-            print len(self.faq_pages), len(self.faq_list)
-            print self.faq_pages.keys()
-            print self.faq_list
+            log.debug("%d %d", len(self.faq_pages), len(self.faq_list))
+            log.debug(self.faq_pages.keys())
+            log.debug(self.faq_list)
             if len(self.faq_pages) != len(self.faq_list):
                 return
             faq = self.page_widgets['FAQ']
@@ -149,7 +151,7 @@ class Tabs:
 
         History.addHistoryListener(self)
         initToken = History.getToken()
-        #print "initial token", initToken
+        log.info("initial token: '%s'", initToken)
         self.onHistoryChanged(initToken)
         self.fTabs.addTabListener(self)
         
@@ -168,7 +170,7 @@ class Tabs:
             self.fTabs.selectTab(idx)
             
     def onError(self, text, code):
-        print "LOAD ERROR(",code,"):",text
+        log.error("LOAD ERROR(%s): %s", str(code), text)
 
     def loadPageList(self):
         HTTPRequest().asyncGet("sidebar.html",
