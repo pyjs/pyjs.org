@@ -1,53 +1,39 @@
 
 <p>
-There are four main ways:
+Pyjamas has its own logging module that you can use to display log messages
+with JavaScript's alert() function, printed in a dedicated <em>div</em>
+element in the HTML document, or written to the console.
 </p>
-<ul>
-<li /> If you like, throw in lots of "alerts" into your application.
 <pre class="code">
-from pyjamas import Window
-Window.alert("Hello, here is an error")
+from pyjamas import logging
+log = logging.getAlertLogger()   # other loggers: Append, Console, Print ...
+...
+log.error("Hello, here is an error")
 </pre>
-<li /> My favourite: add some HTML to the end of the page:
-<pre class="code">
-from pyjamas.ui.RootPanel import RootPanel
-from pyjamas.ui.HTML import HTML
-RootPanel().add(HTML("hello, here is an error")
-</pre>
-<li /> Another approach is to follow what examples/libtest/write.py does,
-which you should just consider blatantly copying:
-<pre class="code">
-from pyjamas import DOM
-
-def getBodyElement():
-    JS(""" return $doc.body; """)
-
-def write(text):
-    global data
-    data += text
-    DOM.setInnerHTML(element, data)
-
-def writebr(text):
-    write(text + "&lt;br /&gt;\n")
-
-data = ""
-element = DOM.createDiv()
-DOM.appendChild(getBodyElement(), element)
-</pre>
-<li /> If you have followed the advice above of the previous question,
-and have installed Firebug, then just insert a "print" statement, exactly
-as you would in "standard" python.  All output is directed to "console.write",
-where Firebug will add an object called "console" to the global namespace
-of your browser, and will "write" anything that goes to that console.write()
-function into a special debugging window.  If you haven't installed Firebug,
-and you use "print", you will get an error (because there will be no object
-called "console") in your browser's global namespace.  So make your life
-easier, and install Firebug.  or not.
-</ul>
-<p>
-A Window.alert is the easiest but also the most annoying.  It has the
-advantage however of not disrupting the screen layout.  Perhaps
-some day someone will do something really sophisticated, like provide
-a "logger" module which throws up a nice separate window.
-</p>
+<p>For a good understanding of the logging module read the
+<a href="http://docs.python.org/howto/logging.html#useful-handlers">Python
+Logging HOWTO</a>; most of it directly applies to Pyjamas as the module is
+built on top of Python logging. Loggers you'll find useful:</p>
+<ol>
+<li>AlertLogger: <code>log = logging.getAlertLogger()</code><br/>
+    shows a browser alert popup dialog for each log message.</li>
+<li>AppendLogger: <code>log = logging.getAppendLogger()</code><br/>
+    appends text to the end of the HTML document body. The <em>div</em> element
+    holding the log messages can be accessed by its element ID
+    ('logging_<em>logger_name</em>', 'logging_pyjs' by default) for styling.</li>
+<li>ConsoleLogger: <code>log = logging.getConsoleLogger()</code><br/>
+    passes log messages on to Firebug using the
+    <a href="http://getfirebug.com/logging">console.log()</a> function.</li>
+<li>PrintLogger: <code>log = logging.getPrintLogger()</code><br/>
+    prints text to <em>cerr</em>, the default error output stream. This is a
+    good choice when developing/testing with Pyjamas Desktop.</li>
+<li>NullLogger: <code>log = logging.getLoggerForHandler(NullHandler)</code><br/>
+    disable logging completely and safely. This handler is part of standard
+    Python (include it with <code>from logging import NullHandler</code>).</li>
+</ol>
+<p>Note that for the ConsoleLogger (and the PrintLogger when used in a browser)
+you will need Firefox with Firebug installed, or the Chrome browser. If you
+haven't installed Firebug, and you write a log message (or use "print") you
+will get an error (because there will be no object called "console" in your
+browser's global namespace). So make your life easier, and install Firebug.</p>
 
