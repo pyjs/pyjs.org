@@ -28,14 +28,14 @@ built on top of Python logging. Loggers you'll find useful:</p>
     holding the log messages can be accessed by its element ID
     ('logging_<em>logger_name</em>', 'logging_pyjs' by default) for styling.</li>
 <li>ConsoleLogger: <code>log = logging.getConsoleLogger()</code><br/>
-    passes log messages on to Firebug using the
+    passes log messages on to the console of Firebug/Chrome/Opera using the
     <a href="http://getfirebug.com/logging">console.log()</a> function.</li>
 <li>PrintLogger: <code>log = logging.getPrintLogger()</code><br/>
     prints text to <em>cerr</em>, the default error output stream. This is a
     good choice when developing/testing with Pyjamas Desktop.</li>
 <li>NullLogger: <code>log = logging.getLoggerForHandler(NullHandler())</code><br/>
-    disable logging completely and safely. Include this handler with
-    <code>from pyjamas.logging.handlers import NullHandler</code>).</li>
+    disable logging completely and safely. Import this handler with
+    <code>from pyjamas.logging.handlers import NullHandler</code>.</li>
 </ol>
 <p>Note that for the ConsoleLogger (and the PrintLogger when used in a browser)
 you will need Firefox with Firebug installed, the Chrome browser, or Opera.
