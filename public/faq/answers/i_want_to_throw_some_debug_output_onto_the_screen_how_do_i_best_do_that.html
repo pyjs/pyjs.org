@@ -10,6 +10,12 @@ log = logging.getAlertLogger()   # other loggers: Append, Console, Print ...
 ...
 log.error("Hello, here is an error")
 </pre>
+<p>To make your life even easier there's also a convenience module that
+provides an AppendLogger with simple text output already by default:</p>
+<pre class="code">
+from pyjamas import log
+log.info('Show this text and value %s now', value)
+</pre>
 <p>For a good understanding of the logging module read the
 <a href="http://docs.python.org/howto/logging.html#useful-handlers">Python
 Logging HOWTO</a>; most of it directly applies to Pyjamas as the module is
@@ -27,13 +33,13 @@ built on top of Python logging. Loggers you'll find useful:</p>
 <li>PrintLogger: <code>log = logging.getPrintLogger()</code><br/>
     prints text to <em>cerr</em>, the default error output stream. This is a
     good choice when developing/testing with Pyjamas Desktop.</li>
-<li>NullLogger: <code>log = logging.getLoggerForHandler(NullHandler)</code><br/>
-    disable logging completely and safely. This handler is part of standard
-    Python (include it with <code>from logging import NullHandler</code>).</li>
+<li>NullLogger: <code>log = logging.getLoggerForHandler(NullHandler())</code><br/>
+    disable logging completely and safely. Include this handler with
+    <code>from pyjamas.logging.handlers import NullHandler</code>).</li>
 </ol>
 <p>Note that for the ConsoleLogger (and the PrintLogger when used in a browser)
-you will need Firefox with Firebug installed, or the Chrome browser. If you
-haven't installed Firebug, and you write a log message (or use "print") you
-will get an error (because there will be no object called "console" in your
+you will need Firefox with Firebug installed, the Chrome browser, or Opera.
+If you haven't installed Firebug, and you write a log message (or use "print")
+you will get an error (because there will be no object called "console" in your
 browser's global namespace). So make your life easier, and install Firebug.</p>
 
