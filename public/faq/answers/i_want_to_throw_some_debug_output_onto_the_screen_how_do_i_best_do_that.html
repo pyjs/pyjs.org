@@ -1,12 +1,14 @@
 
 <p>
-Pyjamas has its own logging module that you can use to display log messages
-with JavaScript's alert() function, printed in a dedicated <em>div</em>
-element in the HTML document, or written to the console.
+With Pyjamas you can use full Python-style logging (Python's flexible
+<a href="http://docs.python.org/library/logging.html">event logging module</a>
+has been ported to pyjs). Additional handlers allow you to display log messages
+in a dedicated <em>div</em> element in the HTML document, in the Web browser's
+error console, and with JavaScript's alert() function.
 </p>
 <pre class="code">
 from pyjamas import logging
-log = logging.getAlertLogger()   # other loggers: Append, Console, Print ...
+log = logging.getConsoleLogger()   # other loggers: Alert, Append, Print ...
 ...
 log.error("Hello, here is an error")
 </pre>
@@ -17,9 +19,9 @@ from pyjamas import log
 log.info('Show this text and value %s now', value)
 </pre>
 <p>For a good understanding of the logging module read the
-<a href="http://docs.python.org/howto/logging.html#useful-handlers">Python
-Logging HOWTO</a>; most of it directly applies to Pyjamas as the module is
-built on top of Python logging. Loggers you'll find useful:</p>
+<a href="http://docs.python.org/howto/logging.html">Python
+Logging HOWTO</a>; most of it directly applies to Pyjamas. Additional Loggers
+provided by Pyjamas, and how you'd use them:</p>
 <ol>
 <li>AlertLogger: <code>log = logging.getAlertLogger()</code><br/>
     shows a browser alert popup dialog for each log message.</li>
@@ -28,18 +30,15 @@ built on top of Python logging. Loggers you'll find useful:</p>
     holding the log messages can be accessed by its element ID
     ('logging_<em>logger_name</em>', 'logging_pyjs' by default) for styling.</li>
 <li>ConsoleLogger: <code>log = logging.getConsoleLogger()</code><br/>
-    passes log messages on to the console of Firebug/Chrome/Opera using the
-    <a href="http://getfirebug.com/logging">console.log()</a> function.</li>
+    passes log messages on to the error console of Firebug/Chrome/Opera/<a
+    href="http://msdn.microsoft.com/en-us/library/dd565625(v=vs.85).aspx">IE>7</a>
+    using the
+    <a href="http://getfirebug.com/logging">console logging</a> functions.</li>
 <li>PrintLogger: <code>log = logging.getPrintLogger()</code><br/>
     prints text to <em>cerr</em>, the default error output stream. This is a
     good choice when developing/testing with Pyjamas Desktop.</li>
 <li>NullLogger: <code>log = logging.getLoggerForHandler(NullHandler())</code><br/>
-    disable logging completely and safely. Import this handler with
-    <code>from pyjamas.logging.handlers import NullHandler</code>.</li>
+    disable logging completely and safely. Import this handler with:
+    <code>from pyjamas.logging.handlers import NullHandler</code></li>
 </ol>
-<p>Note that for the ConsoleLogger (and the PrintLogger when used in a browser)
-you will need Firefox with Firebug installed, the Chrome browser, or Opera.
-If you haven't installed Firebug, and you write a log message (or use "print")
-you will get an error (because there will be no object called "console" in your
-browser's global namespace). So make your life easier, and install Firebug.</p>
 
