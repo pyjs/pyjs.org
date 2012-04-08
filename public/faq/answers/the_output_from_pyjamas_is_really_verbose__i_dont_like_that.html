@@ -1,11 +1,16 @@
 <p>
 Pyjamas is a compiler - it's a specialist tool that focusses specifically
-on the job of turning python into javascript.  It does <i>not</i>
+on the job of turning python into javascript.  It does <em>not</em>
 include "compression" technology.  That task is done by specialist
 technology such as the "YUI Javascript Compressor", the use of which
 will make it damn hard for you to debug an application as it completely
 trashes all of the names of functions and variables.  So only make use
 of compressors if you absolutely have to.
+</p>
+<p>
+Sujan Shakya has contributed a script to compress pyjs output using such a
+compressor (<code>contrib/pyjscompressor.py</code>). It reduces the output
+size to about 50%.
 </p>
 <p>
 HTTP 1.1 GZip Compression is usually enabled by default in both
