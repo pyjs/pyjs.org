@@ -10,13 +10,7 @@ error console, and with JavaScript's alert() function.
 from pyjamas import logging
 log = logging.getConsoleLogger()   # other loggers: Alert, Append, Print ...
 ...
-log.error("Hello, here is an error")
-</pre>
-<p>To make your life even easier there's also a convenience module that
-provides an AppendLogger with simple text output already by default:</p>
-<pre class="code">
-from pyjamas import log
-log.info('Show this text and value %s now', value)
+log.error("Hello, here is an %s error", err_name)
 </pre>
 <p>For a good understanding of the logging module read the
 <a href="http://docs.python.org/howto/logging.html">Python

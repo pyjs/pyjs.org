@@ -1,8 +1,8 @@
 import pyjd # dummy in pyjs
 
+from pyjamas import logging
 from pyjamas import DeferredCommand
 from pyjamas import History
-from pyjamas import logging
 from pyjamas import Window
 from pyjamas.HTTPRequest import HTTPRequest
 from pyjamas.ui import Event
@@ -22,8 +22,8 @@ from pyjamas.ui.TabPanel import TabPanel
 from pyjamas.ui.VerticalPanel import VerticalPanel
 from PageLoader import PageListLoader, PageLoader
 
-# global logger. Set level to DEBUG to see the log.debug() messages too!
-log = logging.getPrintLogger('pyjs_site', logging.INFO)
+# global logger. Set level higher than DEBUG to see less logging messages
+log = logging.getConsoleLogger()
 
 #class PrettyTab(DecoratorPanel):
 class PrettyTab(Composite):
@@ -87,6 +87,7 @@ class Tabs:
     def onWindowResized(self, width, height):
 
         tabwidth = "%dpx" % (width - 350)
+        log.info('New tab control width = %s <a href="foo.bar">foo.bar</a>', tabwidth)
         #width = "%dpx" % (width-20)
         #self.header.setWidth(width)
         #self.dock.setCellWidth(self.header, width)
@@ -96,13 +97,12 @@ class Tabs:
         self.dock.setCellWidth(self.fTabs, tabwidth)
 
     def createPage(self, title, purpose, text):
-
-        log.debug("create page %s %s %s", title, purpose, text)
+        #log.debug("create page %s %s %s", title, purpose, text)
         if purpose == 'faq':
             self.faq_pages[title] = text
             log.debug("%d %d", len(self.faq_pages), len(self.faq_list))
-            log.debug(self.faq_pages.keys())
-            log.debug(self.faq_list)
+            #log.debug(self.faq_pages.keys())
+            #log.debug(self.faq_list)
             if len(self.faq_pages) != len(self.faq_list):
                 return
             faq = self.page_widgets['FAQ']
@@ -151,7 +151,7 @@ class Tabs:
 
         History.addHistoryListener(self)
         initToken = History.getToken()
-        log.info("initial token: '%s'", initToken)
+        log.debug("initial token: '%s'", initToken)
         self.onHistoryChanged(initToken)
         self.fTabs.addTabListener(self)
         
@@ -171,6 +171,7 @@ class Tabs:
             
     def onError(self, text, code):
         log.error("LOAD ERROR(%s): %s", str(code), text)
+        pass
 
     def loadPageList(self):
         HTTPRequest().asyncGet("sidebar.html",
