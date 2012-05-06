@@ -1,19 +1,19 @@
 <div id="content">
-<h2>Pyjamas Python-to-Javascript Translator</h2>
+<h2>Pyjs Python-to-Javascript Translator</h2>
 <p>
-The pyjamas python-to-javascript compiler is actually a
+The Pyjs Python-to-Javascript compiler is actually a
 <a href="http://en.wikipedia.org/wiki/Translator_(computing)">language translator</a>.
 It has two main modes: -O and --strict.  The --strict mode aims for
-<i>full</i> python interoperability, even at the expense of performance,
+<i>full</i> Python interoperability, even at the expense of performance,
 whilst the -O mode is, like gcc's -O option, "optimised" for speed,
-even at the expense of missing out certain python language features
-and relying on javascript instead.
+even at the expense of missing out certain Python language features
+and relying on Javascript instead.
 The <a href="https://github.com/pyjs/pyjs/wiki/migrationguide">Migration Guide</a>
 best describes the differences.
 </p>
 <h2>Supported syntax</h2>
 <p>
-The majority of python 2.5, and parts of python 2.6 syntax are supported,
+The majority of Python 2.5, and parts of Python 2.6 syntax are supported,
 including yield <i>despite</i> only one web browser engine having support
 for ECMAScript "yield" (which is <b>not</b> used).  The yield support is
 implemented as a state machine, rewriting the code so that it is re-entrant,
@@ -39,30 +39,29 @@ supported, emulated correctly as javascript.
 </p>
 <p>
 One particular feature worth noting: the pyjamas python-to-javascript compiler
-uses the internal features of python (its compile module) to turn python into
+uses the internal features of Python (its compile module) to turn Python into
 an Abstract Syntax Tree.   This has - had - the disadvantage that the compiler
-is - was - tied to one specific version of python (2.5).  As of Pyjamas 
-0.6, it has become possible to use anything from
-python 2.4 and upwards to compile code with python 2.5 syntax, using the
-"--internal-ast" option.  A port of lib2to3 was used as the basis for an
-AST which is identical to that created by the c-code in the http://python.org
-compiler.  The plan is to use this at some point to implement "exec" and
-"eval" builtins, but it has the nice side-effect of allowing people who
-can only use specific versions of python to reliably compile pyjamas python
-into javascript.
+is - was - tied to one specific version of python (2.5).  As of Pyjs  0.6,
+it has become possible to use anything from Python 2.4 and upwards to compile
+code with Python 2.5 syntax, using the "--internal-ast" option.
+A port of lib2to3 was used as the basis for an AST which is identical to that
+created by the c-code in the CPython compiler.
+The plan is to use this at some point to implement "exec" and "eval" builtins,
+but it has the nice side-effect of allowing people who can only use specific
+versions of python to reliably compile Pyjs Python into Javascript.
 </p>
 <p>
 Overall, the general rule is that whoever wants or needs something, they
-either work around the limitations of javascript and the pyjs implementation,
+either work around the limitations of Javascript and the Pyjs implementation,
 or they provide a patch to improve the compiler/translator.
 </p>
 
 <h2>Supported modules</h2>
 <p>
-Additionally, the python-to-javascript compiler has available to it some
-implementations of standard python modules, either in pure python or in
-hybrid javascript and using web browser built-ins.  Here is a list of the
-current python modules that are partially supported.  They have all been
+Additionally, the Python-to-Javascript compiler has available to it some
+implementations of standard python modules, either in pure Python or in
+hybrid Javascript and using web browser built-ins.  Here is a list of the
+current Python modules that are partially supported.  They have all been
 contributed by pyjamas developers, and anyone wishing to have particular
 features that are not yet included should simply write them and submit them
 as a patch:
@@ -88,7 +87,7 @@ as a patch:
 <h2>Supported built-ins</h2>
 <p>
 Here, also, is a list of supported built-in functions, classes and types.
-Again: these have been contributed by various pyjamas developers, and again,
+Again: these have been contributed by various Pyjs developers, and again,
 if there is a particular function or feature missing, it can be submitted
 as a patch.
 </p>
