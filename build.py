@@ -16,6 +16,7 @@ reBody = re.compile('(^<div id="body">).*?(^</div>)', re.DOTALL|re.MULTILINE)
 def writeDocument(html, tpl, outfile):
     final = reBody.sub(r'\1'+html+r'\2', tpl)
     f = open(outfile, 'w')
+    print 'Writing '+outfile+'...'
     f.write(final)
     f.close()
 
@@ -30,7 +31,9 @@ reDocument = re.compile('^<div class="document".*?>(.*)</div>$', re.DOTALL)
 def getRenderedPages():
     pages = {}
     files = glob.glob('wiki/*.rest')
+    files.remove('wiki/Home.rest') # default github wiki page, docs for updating site
     for fname in files:
+        print 'Loading '+fname+'...'
         wiki = open(fname, 'r').read()
         src = reWikiLink.sub(makeWikiLink, wiki)
         parts = publish_parts(src, writer_name='html4css1')
@@ -40,6 +43,7 @@ def getRenderedPages():
     return pages
 
 if __name__ == "__main__":
+    print 'Copying main.css to site/'
     shutil.copy('main.css', 'site')
     pages = getRenderedPages()
     menu = pages.pop('Menu')
