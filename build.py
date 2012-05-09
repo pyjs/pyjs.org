@@ -2,7 +2,7 @@
 
 from docutils.core import publish_parts
 from docutils.writers.html4css1 import Writer
-import glob, re
+import glob, re, os.path, shutil
 
 reWikiLink = re.compile('\[\[(.*?)\]\]')
 def makeWikiLink(m):
@@ -29,19 +29,20 @@ def makeTemplate(menu):
 reDocument = re.compile('^<div class="document".*?>(.*)</div>$', re.DOTALL)
 def getRenderedPages():
     pages = {}
-    files = glob.glob('*.rest')
+    files = glob.glob('wiki/*.rest')
     for fname in files:
         wiki = open(fname, 'r').read()
         src = reWikiLink.sub(makeWikiLink, wiki)
         parts = publish_parts(src, writer_name='html4css1')
         body = parts['html_body'].encode('utf-8')
         html = reDocument.search(body).group(1)
-        pages[fname[:-5]] = html
+        pages[os.path.basename(fname)[:-5]] = html
     return pages
 
 if __name__ == "__main__":
+    shutil.copy('main.css', 'site')
     pages = getRenderedPages()
     menu = pages.pop('Menu')
     template = makeTemplate(menu)
     for name, page in pages.items():
-        writeDocument(page, template, name+'.html')
+        writeDocument(page, template, 'site/'+name+'.html')
