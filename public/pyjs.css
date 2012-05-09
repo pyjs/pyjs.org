@@ -1,17 +1,19 @@
 body {
-  background-color: white;
-  color: black;
+  background-color: #fdfdfd;
+  color: #222;
   margin: 0;
   padding: 0;
   font-family: Arial,Helvetica,sans-serif;
+  text-shadow: #ccc -1px -1px;
 }
 
 a {
-  color: darkblue;
+  color: #FF4800;
+  text-decoration: none;
 }
 
 a:visited {
-  color: darkblue;
+
 }
 
 .gwt-BorderedPanel {
@@ -642,39 +644,55 @@ dl.concise dt::after {
 #masthead {
     margin: 0;
     padding: 1em;
-    background-color: #660099; 
+    background-color: #111; 
     color: white;
     font-weight: bold;
-}
-#masthead h1 {
-    /* hide top-level header but still allow web accessibility */
-    position: fixed;
-    top: -999px;
 }
 #mastbottom {
-    background: #d400ba;
-    border-bottom: 3px solid #660099;
-    padding: 0.2em 1em 3em 1em;
-    color: white;
+    background: #E3E3E3;
+    border: 0.2em solid #111;
+    border-width: 1em 0 0.25em 0;
+    padding: 0.2em;
+    color: #f0f0f0;
+    text-shadow: #444 -0.2em -0.2em 0.2em;
+    position: relative;
 }
 #mastbottom h2 {
-    display: inline;
+    display: inline-block;
+    margin: 0.1em;
+    vertical-align: middle;
+}
+#mastbottom * {
+    vertical-align: middle;
+}
+#mastbottom h2 .pyjs {
+    font-size: 3.4em;
+    color: #FF4800;
+}
+#mastbottom h2 .tagline {
+    position: relative;
+    vertical-align: text-top;
+    color: #222;
+    text-shadow: #808080 -1px -1px;
 }
 #mastfooter {
-    background: #d400ba;
-    color: white;
+    background: #E3E3E3;
+    color: #222;
+    text-shadow: #808080 -1px -1px;
     font-size: smaller;
     font-weight: bold;
-    border-top: 1px solid #660099;
-    border-bottom: 3px solid #660099;
+    border-top: 0.2em solid #111;
+    border-bottom: 3px solid #111;
     padding: 0.3em 2em 0.3em 2em;
 }
 #mastfooter a {
-    color: white;
+
 }
 #logo {
     float: left;
     margin: 0 2em 2em 2em;
+    position: relative;
+    bottom: 1.4em;
 }
 #title {
     position: relative;
@@ -693,39 +711,47 @@ dl.concise dt::after {
 }
 #downloadnow {
     position: relative;
-    top: -0.7em;
-    right: 2.7em;
-    float: right;
-    margin-left: -1.1em;
-    margin-right: -1.1em;
-    padding-left: 0;
-    padding-right: 0;
+    display: inline-block;
+    float:right;
+    margin: 0 1em;
     text-align: center;
 }
+#downloadnow .col {
+    position: absolute;
+    top: -100%;
+    bottom: -100%;
+    right: 25%;
+    left: 25%;
+    background-color: #222; 
+    border-radius: 1em;
+}
 #downloadnow a {
-    color: white;
+    color: #FF4800;
+    text-shadow: #808080 -1px -1px 0.1em;
+    text-decoration: none;
+}
+#downloadnow h3 {
+    position: relative;
 }
 #downloadnow code {
     font-weight: bold;
     position: relative;
-    top: -0.6em;
-    padding: 0.5em 1.5em 0.5em 1.5em;
-    text-shadow: #660099 1px 1px,
-                 #6a0b99 2px 2px,
-                 #773399 3px 3px,
-                 #7d4499 4px 4px,
-                 #d400ba -1px -1px,
-                 #d400ba -1px 1px;
+    top: -0.4em;
+    padding: 0.6em;
+    text-shadow: #444 -1px -1px;
+    border-radius: 1em;
+    font-size: 1.2em;
+    background-color: #222;
 }
 
 span.p {
-    color: #660099
+    color: #111
 }
 span.g {
     color: #009f29;
 }
 span.m {
-    color: #d400ba;
+    color: #007B00;
 }
 .c {
     text-align: center;
@@ -743,7 +769,7 @@ span.m {
     border: solid;
     border-width: 0px 1px 1px 1px;
     margin: 0 0.5em 0 0;
-    background-color: #660099; 	
+    background-color: #111; 	
 }
 #tabs li a {
     padding: 0 1em;
