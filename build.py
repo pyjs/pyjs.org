@@ -73,7 +73,10 @@ def generateAPI(opts):
         '--url', 'http://pyjs.org',
         '-o', join(opts.target, 'api'),
         '--exclude', 'pyjamas.raphael',
-        join(opts.pyjs, 'library/pyjamas/')
+        '--exclude', 'pyjamas.selection',
+        '--exclude', 'pyjamas.chart',
+        '--exclude', 'pyjamas.Canvas',
+        join(opts.pyjs, 'library/pyjamas')
     ]
     cli.cli()
 
