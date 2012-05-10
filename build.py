@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 from optparse import OptionParser, OptionGroup
@@ -51,7 +51,7 @@ def generateSite(opts):
 
     shutil.copy('main.css', opts.target)
 
-    menu = wikiToHTML('wiki/Menu.rest')
+    menu = wikiToHTML(join(opts.wiki, 'Menu.rest'))
     template = makeTemplate(menu)
 
     wikiPages = getWikiPages(opts)
@@ -68,8 +68,10 @@ def generateSite(opts):
 def generateAPI(opts):
     sys.argv = ['-v' for i in range(opts.verbosity)]
     sys.argv += [
-        '-o', join(opts.target, 'api'),
         '--parse-only',
+        '--name', 'Pyjs',
+        '--url', 'http://pyjs.org',
+        '-o', join(opts.target, 'api'),
         '--exclude', 'pyjamas.raphael',
         join(opts.pyjs, 'library/pyjamas/')
     ]
