@@ -12,6 +12,7 @@ output
 
 .idea
 /stdlib
+/site
 
 /dev/parts
 /dev/eggs
