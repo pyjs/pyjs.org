@@ -677,7 +677,6 @@ dl.concise dt::after {
 #mastfooter {
     background: #E3E3E3;
     color: #222;
-    text-shadow: #808080 -1px -1px;
     font-size: smaller;
     font-weight: bold;
     border-top: 0.2em solid #111;
