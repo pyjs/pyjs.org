@@ -334,8 +334,8 @@ a:visited {
 {
 }
 
-.gwt-DecoratedTabBar {
-    padding-left: 8em;
+.tabs > tbody > tr > td > .gwt-DecoratedTabBar {
+    padding-left: 8em;  /*  indent tab bar, place right of logo */
 }
 
 .gwt-DecoratedTabBar-wrapper .tabTopLeftInner /* { the inner element of the cell } */
