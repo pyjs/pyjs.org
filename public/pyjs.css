@@ -128,6 +128,10 @@ a:visited {
   cursor: hand;
 }
 
+.tabMiddleCenterInner .gwt-HTML:hover {
+    background-color: #009F29;  /* #FF4800 is too dark! */
+}
+
 .gwt-TabBar .gwt-TabBarItem-selected {
   font-weight: bold;
   background-color: #E8EEF7;
@@ -328,6 +332,10 @@ a:visited {
 }
 .gwt-DecoratorPanel .bottomRightInner /* { the inner element of the cell } */
 {
+}
+
+.gwt-DecoratedTabBar {
+    padding-left: 8em;
 }
 
 .gwt-DecoratedTabBar-wrapper .tabTopLeftInner /* { the inner element of the cell } */
@@ -581,6 +589,8 @@ a:visited {
     margin-left: 2em;
     margin-right: 1em;
     font-size: 0.8em;
+    position: relative;
+    top: -3.5em;
 }
 
 .sidebar dl dt {
@@ -651,7 +661,7 @@ dl.concise dt::after {
     background: #E3E3E3;
     border: 0.2em solid #111;
     border-width: 1em 0 0.25em 0;
-    padding: 0.2em;
+    padding: 0.2em 0.2em 1.8em 0.2em;
     color: #f0f0f0;
     text-shadow: #444 -0.2em -0.2em 0.2em;
     position: relative;
@@ -746,7 +756,7 @@ span.p {
     color: #111
 }
 span.g {
-    color: #009f29;
+    color: #009F29;
 }
 span.m {
     color: #007B00;
@@ -754,6 +764,11 @@ span.m {
 .c {
     text-align: center;
 }
+
+table.tabs {
+    margin-top: -4.5em;
+}
+
 #tabs {
     text-align: center;
 }
