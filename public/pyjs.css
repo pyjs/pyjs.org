@@ -661,7 +661,7 @@ dl.concise dt::after {
     background: #E3E3E3;
     border: 0.2em solid #111;
     border-width: 1em 0 0.25em 0;
-    padding: 0.2em 0.2em 1.8em 0.2em;
+    padding: 0.2em 0.2em 1.6px 0.2em;
     color: #f0f0f0;
     text-shadow: #444 -0.2em -0.2em 0.2em;
     position: relative;
