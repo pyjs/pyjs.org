@@ -1,6 +1,8 @@
 Welcome to the guts behind pyjs.org glory.
 
-This repository contains the code of the http://pyjs.org website.
+This repository contains the code for the http://pyjs.org website. (The actual content of the
+website, as viewed online, is placed in the `pyjs.github.com <https://github.com/pyjs/pyjs.github.com>`_
+repository, and is supposed to be a fully auto-generated thing: the webspace if you want so.)
 
 Current State
 =============
