@@ -2,36 +2,14 @@ GIT_REMOTE_BASE = https://github.com/pyjs/
 
 .PHONY: *
 
-build: update site api
+build: update site api examples
 
 update:
 	git pull
 
 examples: clone_pyjs
-	mkdir -p site/examples
-	#XXX translate ALL examples to ONE location
-	# without merging the translated modules, the examples dir is over 500MiB ... far too large for Github,
-	# and is unacceptable anyways. the solution is to use --multi-file, thereby allowing all examples
-	# to share dynamic_app_modules ... however, we also want --compile-inplace else our compile time will be
-	# *exponentially* longer. these two are currently mutually exclusive for no good reason [f0e22a04];
-	# a long standing bug (gc#533) prevents `cp {src}/lib.js  {out}/lib/`, AND mangles the mod names in the
-	# cache.html loader ... the app fails before it even starts. this was never fixed because the current
-	# linker/visitor doesn't keep very good track of modules -- it uses path/module-name/module-path/???, .PY
-	# AND .JS -- and there is no foolproof way to convert the fullpath (what we see), to an abs import name +
-	# platform (how stuff is stored in lib/).
-	#
-	# ... fix by introducing proper(!) OO design, and mirroring real python modules:
-	#
-	# x_sys = type('x_sys', (x_module,), {'x_file': '/abs/.../me.py',
-	#                                     'x_name': 'my.super.module',
-	#                                     'x_path': ['/where/to/find/more'],
-	#                                      ?????? : [...]})
-	#
-	# ... this way you retain -- and have access too -- all infomation whenever it's needed. this should also
-	# simplify MUCH of the translation process.
-	#
-	#python2 build/pyjs/examples/__main__.py --download -- --multi-file --cache-buster --compile-inplace
-	cp -a build/pyjs/examples/[^_]*/ site/examples
+	python2 build/pyjs/examples/__main__.py --download
+	mv build/pyjs/examples/__output__ site/examples
 
 api: clone_pyjs
 	mkdir -p site/api
