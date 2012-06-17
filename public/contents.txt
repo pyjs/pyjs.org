@@ -1,8 +1,0 @@
-About:about.html
-Overview:overview.html
-Features:features.html
-Translator:supported.html
-FAQ:faq/faq.html
-Getting Help:documentation.html
-Developing:developing.html
-Roadmap:roadmap.html
