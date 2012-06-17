@@ -9,7 +9,7 @@ update: clone_pyjsorg
 
 examples: clone_pyjs
 	python2 build/pyjs/examples/__main__.py --download
-	mv build/pyjs/examples/__output__ site/examples
+	cp -aT build/pyjs/examples/__output__ site/examples
 
 api: clone_pyjs
 	mkdir -p site/api
