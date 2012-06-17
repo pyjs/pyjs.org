@@ -7,16 +7,16 @@ build: update site api examples
 update: clone_pyjsorg
 	git pull
 
-examples: clone_pyjs
+examples: update clone_pyjs
 	python2 build/pyjs/examples/__main__.py --download
 	rm -rf site/examples
 	cp -a build/pyjs/examples/__output__ site/examples
 
-api: clone_pyjs
+api: update clone_pyjs
 	mkdir -p site/api
 	python2 build.py -v --api-only --pyjs-src=build/pyjs
 
-site: clone_pyjsorgwiki
+site: update clone_pyjsorgwiki
 	mkdir -p site
 	python2 build.py -v --site-only --wiki-src=build/wiki
 	cp site/About.html site/index.html
