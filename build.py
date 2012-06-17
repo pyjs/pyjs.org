@@ -49,7 +49,7 @@ def generateSite(opts):
     log = cli.ConsoleLogger(opts.verbosity)
     log.start_progress('Generating Website')
 
-    shutil.copy('main.css', opts.target)
+    shutil.copytree('assets', join(opts.target, 'assets'))
 
     menu = wikiToHTML(join(opts.wiki, 'Menu.rest'))
     template = makeTemplate(menu)
