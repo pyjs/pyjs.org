@@ -1,10 +1,10 @@
-GIT_REMOTE_BASE = https://github.com/pyjs/
+GIT_REMOTE_BASE = https://github.com/
 
 .PHONY: *
 
 build: update site api examples
 
-update:
+update: clone_pyjsorg
 	git pull
 
 examples: clone_pyjs
@@ -21,12 +21,16 @@ site: clone_pyjsorgwiki
 	cp site/About.html site/index.html
 
 clone_pyjs:
-	test -d build/pyjs || git clone --depth 1 $(GIT_REMOTE_BASE)pyjs.git build/pyjs
+	test -d build/pyjs || git clone --depth 1 $(GIT_REMOTE_BASE)pyjs/pyjs.git build/pyjs
 	cd build/pyjs && git pull
 
 clone_pyjsorgwiki:
-	test -d build/wiki || git clone --depth 1 $(GIT_REMOTE_BASE)pyjs.org.wiki.git build/wiki
+	test -d build/wiki || git clone --depth 1 $(GIT_REMOTE_BASE)pyjs/pyjs.org.wiki.git build/wiki
 	cd build/wiki && git pull
+
+clone_pyjsorg:
+	test -d site || git clone $(GIT_REMOTE_BASE)pyjs-org/pyjs.org.git site
+	cd site && git pull
 
 #-----------------------------------------------------------------( end build )
 
