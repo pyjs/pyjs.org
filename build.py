@@ -8,7 +8,7 @@ from epydoc import cli
 from os.path import join, basename
 import glob, re, shutil, sys
 
-reWikiLink = re.compile('\[\[(.*?)\]\]')
+reWikiLink = re.compile('\[\[([^]]*?)\]\]')
 def makeWikiLink(m):
     parts = m.group(1).split('|')
     name = link = parts[0]
