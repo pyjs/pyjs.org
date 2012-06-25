@@ -21,7 +21,8 @@ site: update clone_pyjsorgwiki
 	python2 build.py -v --site-only --wiki-src=build/wiki
 	cp site/About.html site/index.html
 	rm -rf site/assets
-	cp -a assets site/assets
+	cp -aT build/wiki/assets site/assets
+	cp -aT assets site/assets
 
 clone_pyjs:
 	test -d build/pyjs || git clone --depth 1 $(GIT_REMOTE_BASE)pyjs/pyjs.git build/pyjs
