@@ -35,7 +35,7 @@ def wikiToHTML(wikiFile):
 def getWikiPages(opts):
     files = glob.glob(join(opts.wiki, '*.rest'))
     files.remove(join(opts.wiki, 'Home.rest')) # skip default github wiki page
-    files.remove(join(opts.wiki, 'Menu.rest')) # handled seperately
+    files.remove(join(opts.wiki, '_Sidebar.rest')) # handled seperately
     return files
 
 reBody = re.compile('(^<div id="body">).*?(^</div>)', re.DOTALL|re.MULTILINE)
@@ -49,7 +49,7 @@ def generateSite(opts):
     log = cli.ConsoleLogger(opts.verbosity)
     log.start_progress('Generating Website')
 
-    menu = wikiToHTML(join(opts.wiki, 'Menu.rest'))
+    menu = wikiToHTML(join(opts.wiki, '_Sidebar.rest'))
     template = makeTemplate(menu)
 
     wikiPages = getWikiPages(opts)
