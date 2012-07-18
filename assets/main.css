@@ -1,37 +1,54 @@
 body {
-    font-size: 100%;
-	margin: 0;
-	padding: 0;
-	border: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 95%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+a:link, a:focus {
+    color: #4183C4;
+}
+a:visited, a:hover {
+    color: #2A6BAE;
+}
+a:active {
+    color: #5EA2E8;
 }
 
 #logo {
     border-bottom: 1px solid black;
-    background-color: #8caccd;
+    background-color: #D3D3D3;
 }
 
 #menu {
     border-right: 3px solid black;
     border-bottom: 3px solid black;
     text-align: right;
-    width: 140px;
+    width: 9.2em;
     float: left;
-    background-color: #efefef;
-    padding-bottom: 10px;
+    background-color: #E7ECEE;
+    padding-bottom: 0.5em;
 }
 #menu ul {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
 }
-
 #menu li {
-    padding: 0px 10px 0px 10px;
+    padding: 0em 0.2em 0em 0.2em;
     list-style: none;
-    margin-top: 1em;
+}
+#menu li a {
+    text-decoration: none;
+    display: block;
+    margin: 0.2em 0em 0.2em 0em;
+    padding: 0.2em 0.4em 0.2em 0.4em;
+}
+#menu li a:hover {
+    background-color: #FFFFFF;
+    color: #202080;
 }
 
 #menu .section {
@@ -39,16 +56,16 @@ body {
     border-bottom: 1px solid black;
     font-weight: bold;
     padding: 0.5em;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
 }
 
 #body {
-    padding: 20px;
+    padding: 1.4em;
     width: 50%;
     float: left;
 }
 
 p {
     line-height: 1.3em;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.4em;
 }
