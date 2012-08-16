@@ -35,7 +35,7 @@ clone_pyjsorgwiki:
 	cd build/wiki && git pull
 
 clone_pyjsorg:
-	test -d site || git clone $(GIT_REMOTE_BASE)pyjs-org/pyjs.org.git site
+	test -d site || git clone $(GIT_REMOTE_BASE)pyjsorg/pyjs.org.git site
 	cd site && git pull
 
 #-----------------------------------------------------------------( end build )
