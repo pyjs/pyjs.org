@@ -7,18 +7,18 @@ body {
 }
 
 a:link, a:focus {
-    color: #4183C4;
+    color: rgb(90, 90, 90);
 }
 a:visited, a:hover {
-    color: #2A6BAE;
+    color: rgb(60, 60, 60);
 }
 a:active {
-    color: #5EA2E8;
+    color: rgb(128, 128, 128);
 }
 
 #logo {
     border-bottom: 1px solid black;
-    background-color: #D3D3D3;
+    background-color: rgb(240, 248, 240);
 }
 
 #menu {
@@ -27,7 +27,7 @@ a:active {
     text-align: right;
     width: 9.2em;
     float: left;
-    background-color: #E7ECEE;
+    background-color: rgb(230, 230, 230);
     padding-bottom: 0.5em;
 }
 #menu ul {
@@ -37,35 +37,52 @@ a:active {
     vertical-align: baseline;
 }
 #menu li {
-    padding: 0em 0.2em 0em 0.2em;
+    padding: 0 .2em;
     list-style: none;
 }
 #menu li a {
     text-decoration: none;
     display: block;
-    margin: 0.2em 0em 0.2em 0em;
-    padding: 0.2em 0.4em 0.2em 0.4em;
+    margin: .2em 0;
+    padding: .2em .4em;
 }
 #menu li a:hover {
-    background-color: #FFFFFF;
-    color: #202080;
+    background-color: white;
 }
 
 #menu .section {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     font-weight: bold;
-    padding: 0.5em;
-    background-color: #FFFFFF;
+    padding: .5em;
+    background-color: white;
 }
 
 #body {
     padding: 1.4em;
-    width: 50%;
     float: left;
+    width: 50em;
 }
 
 p {
     line-height: 1.3em;
     margin-bottom: 1.4em;
+}
+
+@media screen and (max-width: 60em) {
+
+    #body,
+    #menu {
+        float: none;
+        width: auto;
+        font-size: 110%;
+    }
+
+    #logo {
+        float: left;
+        height: 33em;
+        border-right: 2px solid black;
+        border-top: 1px solid black;
+        padding: 1px;
+    }
 }
